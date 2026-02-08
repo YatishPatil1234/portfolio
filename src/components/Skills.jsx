@@ -5,20 +5,20 @@ import { motion } from "framer-motion";
 
 const skillGroups = [
   {
-    title: "Frontend",
-    skills: ["React", "Next.js", "JavaScript", "Tailwind CSS"],
+    title: "Frontend Core",
+    skills: ["HTML", "CSS", "JavaScript", "React", "Next.js"],
   },
   {
-    title: "State & Data",
+    title: "UI & Styling",
+    skills: ["Tailwind CSS", "shadcn/ui"],
+  },
+  {
+    title: "State & APIs",
     skills: ["Redux", "REST APIs"],
   },
   {
-    title: "Backend Basics",
-    skills: ["Node.js", "Express", "MongoDB"],
-  },
-  {
-    title: "Tools",
-    skills: ["Git", "GitHub", "Postman", "VS Code"],
+    title: "Tools & Other Skills",
+    skills: ["Git", "GitHub", "Postman", "VS Code", "SQL", "Core Java (Basic)"],
   },
 ];
 
@@ -37,8 +37,8 @@ export default function Skills() {
           Skills & <span className="text-indigo-400">Tools</span>
         </h2>
         <p className="mt-4 text-white/70 max-w-2xl mx-auto">
-          Technologies and tools I use to build modern, scalable, and
-          user-focused web applications.
+          Technologies and tools I use regularly while building production-ready
+          frontend applications.
         </p>
       </motion.div>
 

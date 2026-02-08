@@ -9,15 +9,15 @@ const projects = [
   {
     title: "CineScope",
     description:
-      "A modern movie discovery application with search, detailed movie pages, and dark mode support.",
-    tech: ["React", "Tailwind CSS", "OMDB API"],
+      "A responsive movie discovery web application where users can search movies, view detailed information, and explore ratings using a public movie API. Focused on clean UI, API integration, and reusable React components.",
+    tech: ["React", "Tailwind CSS", "REST API"],
     link: "#",
   },
   {
-    title: "Fake News Detection System",
+    title: "Fake News Detection UI",
     description:
-      "A machine learning–based system to classify news articles as real or fake with a clean web interface.",
-    tech: ["Python", "Flask", "Machine Learning"],
+      "A frontend web interface built to interact with a fake news detection system. I focused on UI design, form handling, API integration, and presenting results in a clear and user-friendly manner.",
+    tech: ["HTML", "CSS", "JavaScript", "REST API"],
     link: "#",
   },
 ];
@@ -37,8 +37,9 @@ export default function Projects() {
           Featured <span className="text-indigo-400">Projects</span>
         </h2>
         <p className="mt-4 text-white/70 max-w-2xl mx-auto">
-          A selection of projects that showcase my frontend skills,
-          problem-solving approach, and attention to detail.
+          A selection of frontend projects that demonstrate my experience with
+          UI development, API integration, and building real-world web
+          interfaces.
         </p>
       </motion.div>
 
@@ -58,15 +59,12 @@ export default function Projects() {
           >
             <Card className="group h-full bg-white/[0.02] border border-white/10 hover:border-indigo-400/40 transition-colors">
               <CardContent className="p-6 flex flex-col h-full">
-                {/* Project Title */}
                 <h3 className="text-xl font-semibold mb-3">{project.title}</h3>
 
-                {/* Description */}
                 <p className="text-white/70 mb-6 leading-relaxed">
                   {project.description}
                 </p>
 
-                {/* Tech Stack */}
                 <div className="flex flex-wrap gap-2 mb-6">
                   {project.tech.map((tech) => (
                     <Badge
@@ -78,7 +76,6 @@ export default function Projects() {
                   ))}
                 </div>
 
-                {/* CTA */}
                 <div className="mt-auto">
                   <Button
                     variant="outline"
