@@ -1,91 +1,132 @@
 "use client";
 
-import { Badge } from "@/components/ui/badge";
-import { Button } from "@/components/ui/button";
-import { Card, CardContent } from "@/components/ui/card";
 import { motion } from "framer-motion";
 
 const projects = [
   {
     title: "CineScope",
     description:
-      "A responsive movie discovery web application where users can search movies, view detailed information, and explore ratings using a public movie API. Focused on clean UI, API integration, and reusable React components.",
-    tech: ["React", "Tailwind CSS", "REST API"],
-    link: "#",
+      "A movie discovery web application featuring search functionality, dynamic routing, and detailed movie views powered by a public API. Focused on reusable React components, clean UI architecture, and efficient API integration.",
+    tech: ["React", "Next.js", "Tailwind CSS", "REST API"],
+    live: "#", // replace later
+    github: "#", // replace later
   },
   {
     title: "Fake News Detection UI",
     description:
-      "A frontend web interface built to interact with a fake news detection system. I focused on UI design, form handling, API integration, and presenting results in a clear and user-friendly manner.",
+      "A responsive frontend interface designed to interact with a news classification system. Implemented form handling, API integration, and structured result presentation with a clean and user-friendly layout.",
     tech: ["HTML", "CSS", "JavaScript", "REST API"],
-    link: "#",
+    live: "#", // replace later
+    github: "#", // replace later
   },
 ];
 
 export default function Projects() {
   return (
-    <section id="projects" className="max-w-6xl mx-auto px-6 py-24">
+    <section
+      id="projects"
+      className="relative max-w-6xl mx-auto px-6 py-28 overflow-hidden"
+    >
+      {/* Subtle Background Glow */}
+      <div className="absolute inset-0 -z-10">
+        <div className="absolute top-1/3 left-1/2 -translate-x-1/2 w-[350px] h-[350px] md:w-[600px] md:h-[600px] bg-indigo-600/5 rounded-full blur-3xl" />
+      </div>
+
       {/* Section Header */}
       <motion.div
         initial={{ opacity: 0, y: 30 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
-        transition={{ duration: 0.6, ease: "easeOut" }}
-        className="mb-16 text-center"
+        transition={{ duration: 0.6 }}
+        className="mb-20 text-center"
       >
-        <h2 className="text-3xl md:text-4xl font-bold">
+        <h2 className="text-3xl md:text-4xl font-semibold tracking-tight">
           Featured <span className="text-indigo-400">Projects</span>
         </h2>
-        <p className="mt-4 text-white/70 max-w-2xl mx-auto">
-          A selection of frontend projects that demonstrate my experience with
-          UI development, API integration, and building real-world web
-          interfaces.
+        <p className="mt-4 text-white/60 max-w-2xl mx-auto text-sm sm:text-base">
+          Frontend projects demonstrating UI architecture, API integration, and
+          production-ready development practices.
         </p>
       </motion.div>
 
       {/* Projects Grid */}
-      <div className="grid md:grid-cols-2 gap-8">
+      <div className="grid md:grid-cols-2 gap-10">
         {projects.map((project, index) => (
           <motion.div
             key={project.title}
             initial={{ opacity: 0, y: 40 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            transition={{
-              duration: 0.6,
-              ease: "easeOut",
-              delay: index * 0.1,
-            }}
+            transition={{ delay: index * 0.15 }}
+            whileHover={{ y: -6 }}
+            className="
+              relative rounded-2xl p-6
+              bg-white/[0.03]
+              border border-white/10
+              backdrop-blur-sm
+              transition-all duration-300
+              hover:border-indigo-400/40
+            "
           >
-            <Card className="group h-full bg-white/[0.02] border border-white/10 hover:border-indigo-400/40 transition-colors">
-              <CardContent className="p-6 flex flex-col h-full">
-                <h3 className="text-xl font-semibold mb-3">{project.title}</h3>
+            {/* Hover Glow */}
+            <div className="absolute inset-0 rounded-2xl bg-indigo-500/5 opacity-0 hover:opacity-100 transition duration-300" />
 
-                <p className="text-white/70 mb-6 leading-relaxed">
-                  {project.description}
-                </p>
+            <div className="relative z-10 flex flex-col h-full">
+              {/* Screenshot Placeholder */}
+              <div className="mb-5 h-40 rounded-lg bg-gradient-to-br from-indigo-500/10 to-indigo-500/5 border border-white/10" />
 
-                <div className="flex flex-wrap gap-2 mb-6">
-                  {project.tech.map((tech) => (
-                    <Badge
-                      key={tech}
-                      className="bg-indigo-500/10 text-indigo-400"
-                    >
-                      {tech}
-                    </Badge>
-                  ))}
-                </div>
+              {/* Title */}
+              <h3 className="text-xl font-semibold mb-3">{project.title}</h3>
 
-                <div className="mt-auto">
-                  <Button
-                    variant="outline"
-                    className="group-hover:border-indigo-400 group-hover:text-indigo-400"
+              {/* Description */}
+              <p className="text-white/70 mb-6 leading-relaxed text-sm sm:text-base">
+                {project.description}
+              </p>
+
+              {/* Tech Stack */}
+              <div className="flex flex-wrap gap-2 mb-6">
+                {project.tech.map((tech) => (
+                  <span
+                    key={tech}
+                    className="
+                      px-3 py-1 text-xs sm:text-sm rounded-full
+                      bg-indigo-500/10
+                      text-indigo-300
+                      border border-indigo-500/20
+                    "
                   >
-                    View Project
-                  </Button>
-                </div>
-              </CardContent>
-            </Card>
+                    {tech}
+                  </span>
+                ))}
+              </div>
+
+              {/* CTA Links */}
+              <div className="mt-auto flex items-center gap-5 text-sm">
+                <a
+                  href={project.live}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="
+                    text-white/70 hover:text-indigo-400
+                    transition-colors
+                  "
+                >
+                  Live Demo →
+                </a>
+
+                <a
+                  href={project.github}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="
+                    text-white/50 hover:text-white
+                    transition-colors
+                  "
+                >
+                  GitHub
+                </a>
+              </div>
+            </div>
           </motion.div>
         ))}
       </div>

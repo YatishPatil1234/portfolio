@@ -15,14 +15,24 @@ export default function Navbar() {
 
   return (
     <>
-      {/* Top Navbar */}
+      {/* Floating Navbar */}
       <motion.nav
         initial={{ y: -20, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
         transition={{ duration: 0.4, ease: "easeOut" }}
-        className="fixed top-0 left-0 w-full z-50 bg-black/50 backdrop-blur-md border-b border-white/10"
+        className="fixed top-6 left-0 w-full z-50 flex justify-center"
       >
-        <div className="max-w-6xl mx-auto px-6 h-16 flex items-center justify-between">
+        <div
+          className="
+            w-[92%] max-w-6xl
+            bg-black/60 backdrop-blur-xl
+            border border-white/10
+            rounded-2xl
+            px-6 h-16
+            flex items-center justify-between
+            shadow-lg shadow-black/20
+          "
+        >
           {/* Logo */}
           <a href="#" className="text-lg font-semibold tracking-tight">
             <span className="text-white">Yatish</span>
@@ -35,7 +45,14 @@ export default function Navbar() {
               <a
                 key={item.name}
                 href={item.href}
-                className="text-white/70 hover:text-white transition-colors"
+                className="
+                  relative text-white/70 hover:text-white transition-colors
+                  after:absolute after:-bottom-1 after:left-0
+                  after:h-[2px] after:w-0
+                  after:bg-indigo-400
+                  after:transition-all after:duration-300
+                  hover:after:w-full
+                "
               >
                 {item.name}
               </a>
@@ -45,22 +62,24 @@ export default function Navbar() {
           {/* Mobile Hamburger */}
           <button
             onClick={() => setOpen(true)}
-            className="md:hidden text-white/80 hover:text-white transition"
+            className="md:hidden flex flex-col gap-1"
             aria-label="Open menu"
           >
-            ☰
+            <span className="w-5 h-[2px] bg-white"></span>
+            <span className="w-5 h-[2px] bg-white"></span>
+            <span className="w-5 h-[2px] bg-white"></span>
           </button>
         </div>
       </motion.nav>
 
-      {/* Mobile Menu */}
+      {/* Mobile Menu Overlay */}
       <AnimatePresence>
         {open && (
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            className="fixed inset-0 z-40 bg-black/70 backdrop-blur"
+            className="fixed inset-0 z-40 bg-black/70 backdrop-blur-md flex justify-center pt-28"
             onClick={() => setOpen(false)}
           >
             <motion.div
@@ -68,10 +87,16 @@ export default function Navbar() {
               animate={{ y: 0, opacity: 1 }}
               exit={{ y: -20, opacity: 0 }}
               transition={{ duration: 0.3, ease: "easeOut" }}
-              className="bg-black border-b border-white/10"
+              className="
+                w-[92%] max-w-md
+                bg-black border border-white/10
+                rounded-2xl
+                p-6
+                shadow-xl shadow-black/30
+              "
               onClick={(e) => e.stopPropagation()}
             >
-              <div className="px-6 py-6 space-y-6">
+              <div className="space-y-6">
                 {navItems.map((item) => (
                   <a
                     key={item.name}
