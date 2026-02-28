@@ -1,6 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
+import Image from "next/image";
 
 const projects = [
   {
@@ -8,8 +9,9 @@ const projects = [
     description:
       "A movie discovery web application featuring search functionality, dynamic routing, and detailed movie views powered by a public API. Focused on reusable React components, clean UI architecture, and efficient API integration.",
     tech: ["React", "Next.js", "Tailwind CSS", "REST API"],
-    live: "#", // replace later
-    github: "#", // replace later
+    live: "https://cinescope-yt.vercel.app", // replace later
+    github: "https://github.com/YatishPatil1234/Cine_Scope", // replace later
+    image: "/projects/cinescope.png",
   },
   {
     title: "Fake News Detection UI",
@@ -60,21 +62,44 @@ export default function Projects() {
             transition={{ delay: index * 0.15 }}
             whileHover={{ y: -6 }}
             className="
-        group relative rounded-2xl p-7
-        bg-gradient-to-b from-white/[0.04] to-white/[0.02]
-        border border-white/10
-        backdrop-blur-sm
-        transition-all duration-300
-        hover:border-indigo-400/40
-      "
+              group relative rounded-2xl p-7
+              bg-gradient-to-b from-white/[0.04] to-white/[0.02]
+              border border-white/10
+              backdrop-blur-sm
+              transition-all duration-300
+              hover:border-indigo-400/40
+              "
           >
             {/* Hover Glow */}
             <div className="absolute inset-0 rounded-2xl bg-indigo-500/10 opacity-0 group-hover:opacity-100 transition duration-300" />
 
             <div className="relative z-10 flex flex-col h-full">
               {/* Screenshot Placeholder (Improved) */}
-              <div className="mb-6 h-44 rounded-xl bg-gradient-to-br from-indigo-500/10 to-indigo-500/5 border border-white/10 flex items-center justify-center text-white/30 text-sm">
-                Project Preview
+              {/* Project Preview */}
+              <div className="relative mb-6 aspect-video rounded-xl overflow-hidden border border-white/10 bg-black/60">
+                {project?.image ? (
+                  <>
+                    <Image
+                      src={project.image}
+                      alt={`${project.title} Preview`}
+                      fill
+                      sizes="(max-width: 768px) 100vw, 50vw"
+                      quality={100}
+                      className="
+          object-contain
+          transition-transform duration-500
+          group-hover:scale-105
+        "
+                    />
+
+                    {/* soft cinematic overlay */}
+                    <div className="absolute inset-0 bg-black/20 group-hover:bg-black/10 transition" />
+                  </>
+                ) : (
+                  <div className="w-full h-full flex items-center justify-center text-white/30 text-sm bg-gradient-to-br from-indigo-500/10 to-indigo-500/5">
+                    Project Preview
+                  </div>
+                )}
               </div>
 
               {/* Title */}
