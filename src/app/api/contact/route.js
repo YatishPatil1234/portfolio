@@ -1,6 +1,6 @@
 import { Resend } from "resend";
 
-const resend = new Resend(process.env.RESEND_API_KEY);
+const resend = new Resend(process.env.NEXT_PUBLIC_RESEND_API_KEY);
 
 export async function POST(req) {
   try {
@@ -17,7 +17,7 @@ export async function POST(req) {
     ------------------------------------------------- */
     await resend.emails.send({
       from: "Portfolio <onboarding@resend.dev>",
-      to: process.env.CONTACT_EMAIL,
+      to: process.env.NEXT_PUBLIC_CONTACT_EMAIL,
       reply_to: email,
       subject: `New contact message from ${name}`,
       html: `

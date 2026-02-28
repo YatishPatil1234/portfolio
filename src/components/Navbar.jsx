@@ -1,17 +1,42 @@
 "use client";
 
 import { AnimatePresence, motion } from "framer-motion";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 const navItems = [
-  { name: "About", href: "#about" },
-  { name: "Skills", href: "#skills" },
-  { name: "Projects", href: "#projects" },
-  { name: "Contact", href: "#contact" },
+  { name: "About", href: "about" },
+  { name: "Skills", href: "skills" },
+  { name: "Projects", href: "projects" },
+  { name: "Contact", href: "contact" },
 ];
 
 export default function Navbar() {
   const [open, setOpen] = useState(false);
+  const [active, setActive] = useState("");
+
+  // Detect active section
+  useEffect(() => {
+    const handleScroll = () => {
+      const scrollPosition = window.scrollY + 200;
+
+      navItems.forEach((item) => {
+        const section = document.getElementById(item.href);
+        if (section) {
+          if (
+            scrollPosition >= section.offsetTop &&
+            scrollPosition < section.offsetTop + section.offsetHeight
+          ) {
+            setActive(item.href);
+          }
+        }
+      });
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    handleScroll();
+
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
 
   return (
     <>
@@ -41,22 +66,35 @@ export default function Navbar() {
 
           {/* Desktop Menu */}
           <div className="hidden md:flex items-center gap-8 text-sm">
-            {navItems.map((item) => (
-              <a
-                key={item.name}
-                href={item.href}
-                className="
-                  relative text-white/70 hover:text-white transition-colors
-                  after:absolute after:-bottom-1 after:left-0
-                  after:h-[2px] after:w-0
-                  after:bg-indigo-400
-                  after:transition-all after:duration-300
-                  hover:after:w-full
-                "
-              >
-                {item.name}
-              </a>
-            ))}
+            {navItems.map((item) => {
+              const isActive = active === item.href;
+
+              return (
+                <a
+                  key={item.name}
+                  href={`#${item.href}`}
+                  className={`
+                    relative transition-colors
+                    ${
+                      isActive
+                        ? "text-indigo-400"
+                        : "text-white/70 hover:text-white"
+                    }
+                  `}
+                >
+                  {item.name}
+
+                  {/* Active underline */}
+                  <span
+                    className={`
+                      absolute -bottom-1 left-0 h-[2px]
+                      bg-indigo-400 transition-all duration-300
+                      ${isActive ? "w-full" : "w-0 group-hover:w-full"}
+                    `}
+                  />
+                </a>
+              );
+            })}
           </div>
 
           {/* Mobile Hamburger */}
@@ -72,7 +110,7 @@ export default function Navbar() {
         </div>
       </motion.nav>
 
-      {/* Mobile Menu Overlay */}
+      {/* Mobile Menu */}
       <AnimatePresence>
         {open && (
           <motion.div
@@ -86,13 +124,12 @@ export default function Navbar() {
               initial={{ y: -20, opacity: 0 }}
               animate={{ y: 0, opacity: 1 }}
               exit={{ y: -20, opacity: 0 }}
-              transition={{ duration: 0.3, ease: "easeOut" }}
+              transition={{ duration: 0.3 }}
               className="
                 w-[92%] max-w-md
                 bg-black border border-white/10
                 rounded-2xl
-                p-6
-                shadow-xl shadow-black/30
+                p-6 shadow-xl shadow-black/30
               "
               onClick={(e) => e.stopPropagation()}
             >
@@ -100,9 +137,9 @@ export default function Navbar() {
                 {navItems.map((item) => (
                   <a
                     key={item.name}
-                    href={item.href}
+                    href={`#${item.href}`}
                     onClick={() => setOpen(false)}
-                    className="block text-lg text-white/80 hover:text-white transition"
+                    className="block text-lg text-white/80 hover:text-indigo-400 transition"
                   >
                     {item.name}
                   </a>

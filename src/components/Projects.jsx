@@ -50,7 +50,7 @@ export default function Projects() {
       </motion.div>
 
       {/* Projects Grid */}
-      <div className="grid md:grid-cols-2 gap-10">
+      <div className="grid md:grid-cols-2 gap-12">
         {projects.map((project, index) => (
           <motion.div
             key={project.title}
@@ -60,23 +60,27 @@ export default function Projects() {
             transition={{ delay: index * 0.15 }}
             whileHover={{ y: -6 }}
             className="
-              relative rounded-2xl p-6
-              bg-white/[0.03]
-              border border-white/10
-              backdrop-blur-sm
-              transition-all duration-300
-              hover:border-indigo-400/40
-            "
+        group relative rounded-2xl p-7
+        bg-gradient-to-b from-white/[0.04] to-white/[0.02]
+        border border-white/10
+        backdrop-blur-sm
+        transition-all duration-300
+        hover:border-indigo-400/40
+      "
           >
             {/* Hover Glow */}
-            <div className="absolute inset-0 rounded-2xl bg-indigo-500/5 opacity-0 hover:opacity-100 transition duration-300" />
+            <div className="absolute inset-0 rounded-2xl bg-indigo-500/10 opacity-0 group-hover:opacity-100 transition duration-300" />
 
             <div className="relative z-10 flex flex-col h-full">
-              {/* Screenshot Placeholder */}
-              <div className="mb-5 h-40 rounded-lg bg-gradient-to-br from-indigo-500/10 to-indigo-500/5 border border-white/10" />
+              {/* Screenshot Placeholder (Improved) */}
+              <div className="mb-6 h-44 rounded-xl bg-gradient-to-br from-indigo-500/10 to-indigo-500/5 border border-white/10 flex items-center justify-center text-white/30 text-sm">
+                Project Preview
+              </div>
 
               {/* Title */}
-              <h3 className="text-xl font-semibold mb-3">{project.title}</h3>
+              <h3 className="text-xl font-bold tracking-tight mb-3">
+                {project.title}
+              </h3>
 
               {/* Description */}
               <p className="text-white/70 mb-6 leading-relaxed text-sm sm:text-base">
@@ -89,11 +93,11 @@ export default function Projects() {
                   <span
                     key={tech}
                     className="
-                      px-3 py-1 text-xs sm:text-sm rounded-full
-                      bg-indigo-500/10
-                      text-indigo-300
-                      border border-indigo-500/20
-                    "
+                px-3 py-1 text-xs rounded-full
+                bg-white/5
+                text-white/80
+                border border-white/10
+              "
                   >
                     {tech}
                   </span>
@@ -101,15 +105,12 @@ export default function Projects() {
               </div>
 
               {/* CTA Links */}
-              <div className="mt-auto flex items-center gap-5 text-sm">
+              <div className="mt-auto flex items-center gap-6 text-sm">
                 <a
                   href={project.live}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="
-                    text-white/70 hover:text-indigo-400
-                    transition-colors
-                  "
+                  className="font-medium text-indigo-400 hover:text-indigo-300 transition-colors"
                 >
                   Live Demo →
                 </a>
@@ -118,10 +119,7 @@ export default function Projects() {
                   href={project.github}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="
-                    text-white/50 hover:text-white
-                    transition-colors
-                  "
+                  className="text-white/60 hover:text-white transition-colors"
                 >
                   GitHub
                 </a>

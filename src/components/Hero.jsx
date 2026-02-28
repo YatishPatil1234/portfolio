@@ -5,7 +5,7 @@ import { motion } from "framer-motion";
 
 export default function Hero() {
   return (
-    <section className="relative min-h-screen pt-24 md:pt-32 flex items-center justify-center overflow-hidden">
+    <section className="relative min-h-[90vh] md:min-h-screen pt-24 md:pt-32 flex items-center justify-center overflow-hidden">
       {/* Background Glow */}
       <div className="absolute inset-0 -z-10">
         <div
@@ -34,7 +34,7 @@ export default function Hero() {
             }}
             className="inline-block px-4 py-1 text-xs md:text-sm tracking-wide text-indigo-300 bg-indigo-500/10 border border-indigo-500/20 rounded-full"
           >
-            1.5 Years Experience • Frontend Developer
+            Frontend Developer @ Instinct Innovations • 1.5 YOE
           </motion.p>
 
           {/* Headline */}
@@ -47,7 +47,9 @@ export default function Hero() {
           >
             Hi, I’m <span className="text-white">Yatish</span>
             <br />I build{" "}
-            <span className="text-indigo-400">modern web interfaces</span>
+            <span className="bg-gradient-to-r from-indigo-400 to-indigo-300 bg-clip-text text-transparent">
+              modern web interfaces
+            </span>
           </motion.h1>
 
           {/* Description */}
@@ -60,8 +62,9 @@ export default function Hero() {
           >
             Specializing in <span className="text-white">React</span>,{" "}
             <span className="text-white">Next.js</span>, and{" "}
-            <span className="text-white">Tailwind CSS</span>, I build scalable,
-            production-ready applications focused on performance and clean UI.
+            <span className="text-white">Tailwind CSS</span>, I build scalable
+            frontend applications with strong UI architecture, reusable
+            component systems, and performance-first development.
           </motion.p>
 
           {/* CTAs */}
@@ -80,7 +83,12 @@ export default function Hero() {
             >
               <Button
                 size="lg"
-                className="w-full sm:w-auto px-8 py-5 bg-indigo-500 hover:bg-indigo-600 text-white shadow-lg shadow-indigo-500/20 transition-all duration-300"
+                className="w-full sm:w-auto px-8 py-5 cursor-pointer bg-indigo-500 hover:bg-indigo-600 text-white shadow-lg shadow-indigo-500/20 transition-all duration-300"
+                onClick={() => {
+                  document
+                    .getElementById("projects")
+                    ?.scrollIntoView({ behavior: "smooth" });
+                }}
               >
                 View Projects
               </Button>
@@ -101,7 +109,7 @@ export default function Hero() {
                 <Button
                   size="lg"
                   variant="outline"
-                  className="w-full sm:w-auto px-8 py-5 border-white/20 text-white/70 hover:text-white hover:bg-white/5 transition-all duration-300"
+                  className="w-full sm:w-auto px-8 py-5 cursor-pointer border-white/20 text-white/70 hover:text-white hover:bg-white/5 transition-all duration-300"
                 >
                   Download Resume
                 </Button>
