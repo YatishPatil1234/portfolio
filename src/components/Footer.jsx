@@ -9,7 +9,7 @@ export default function Footer() {
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
       transition={{ duration: 0.6 }}
-      className="relative mt-32 overflow-hidden"
+      className="relative mt-20 overflow-hidden"
     >
       {/* Subtle Glow */}
       <div className="absolute inset-0 -z-10">

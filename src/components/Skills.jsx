@@ -25,7 +25,7 @@ export default function Skills() {
   return (
     <section
       id="skills"
-      className="relative max-w-6xl mx-auto px-6 py-28 overflow-hidden"
+      className="relative max-w-6xl mx-auto px-6 pt-28 pb-0 overflow-hidden"
     >
       {/* Background Glow */}
       <div className="absolute inset-0 -z-10">
@@ -38,7 +38,7 @@ export default function Skills() {
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
         transition={{ duration: 0.6 }}
-        className="mb-22 text-center"
+        className="mb-20 text-center"
       >
         <h2 className="text-3xl md:text-4xl font-bold tracking-tight">
           Skills & <span className="text-indigo-400">Technologies</span>

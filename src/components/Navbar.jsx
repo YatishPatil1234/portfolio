@@ -59,7 +59,7 @@ export default function Navbar() {
           "
         >
           {/* Logo */}
-          <a href="#" className="text-lg font-semibold tracking-tight">
+          <a href="#top" className="text-lg font-semibold tracking-tight">
             <span className="text-white">Yatish</span>
             <span className="text-indigo-400">.dev</span>
           </a>

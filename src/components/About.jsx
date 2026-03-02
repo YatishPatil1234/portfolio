@@ -6,7 +6,7 @@ export default function About() {
   return (
     <section
       id="about"
-      className="relative max-w-6xl mx-auto px-6 py-28 overflow-hidden"
+      className="relative max-w-6xl mx-auto px-6 pt-28 pb-0 overflow-hidden "
     >
       {/* Background Glow */}
       <div className="absolute inset-0 -z-10">
@@ -42,9 +42,12 @@ export default function About() {
             <span className="text-white font-medium">
               1.5 years of professional experience
             </span>
-            , I’ve worked in real-world environments delivering responsive
-            interfaces, integrating APIs, and contributing to structured
-            frontend systems.
+            , I currently work as a{" "}
+            <span className="text-white font-medium">
+              Frontend Developer at Instinct Innovations
+            </span>
+            , building responsive interfaces, integrating APIs, and contributing
+            to scalable frontend systems used in real-world environments.
           </p>
 
           <p className="text-white/70 leading-relaxed text-sm sm:text-base">
@@ -69,7 +72,7 @@ export default function About() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6, delay: 0.1 }}
-          className="grid grid-cols-2 gap-6"
+          className="grid grid-cols-1 sm:grid-cols-2 gap-6"
         >
           <Highlight title="1.5+" subtitle="Years Experience" />
           <Highlight title="Production" subtitle="Real-world Projects" />

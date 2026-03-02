@@ -45,7 +45,7 @@ export default function Contact() {
   return (
     <section
       id="contact"
-      className="relative max-w-6xl mx-auto px-6 py-28 overflow-hidden"
+      className="relative max-w-6xl mx-auto px-6 pt-28 pb-0 overflow-hidden"
     >
       {/* Background Glow */}
       <div className="absolute inset-0 -z-10">

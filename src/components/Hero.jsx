@@ -5,7 +5,7 @@ import { motion } from "framer-motion";
 
 export default function Hero() {
   return (
-    <section className="relative min-h-[90vh] md:min-h-screen pt-24 md:pt-32 flex items-center justify-center overflow-hidden">
+    <section className="relative min-h-screen pt-32 md:pt-32 flex items-start md:items-center justify-center overflow-hidden">
       {/* Background Glow */}
       <div className="absolute inset-0 -z-10">
         <div
@@ -34,7 +34,7 @@ export default function Hero() {
             }}
             className="inline-block px-4 py-1 text-xs md:text-sm tracking-wide text-indigo-300 bg-indigo-500/10 border border-indigo-500/20 rounded-full"
           >
-            Frontend Developer @ Instinct Innovations • 1.5 YOE
+            Frontend Developer • 1.5 YOE
           </motion.p>
 
           {/* Headline */}
@@ -87,7 +87,7 @@ export default function Hero() {
                 onClick={() => {
                   document
                     .getElementById("projects")
-                    ?.scrollIntoView({ behavior: "smooth" });
+                    ?.scrollIntoView({ behavior: "smooth", block: "start" });
                 }}
               >
                 View Projects

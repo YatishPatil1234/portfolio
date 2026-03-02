@@ -5,12 +5,22 @@ import Image from "next/image";
 
 const projects = [
   {
-    title: "CineScope",
+    title: "CineScope – Movie Discovery Platform",
     description:
-      "A movie discovery web application featuring search functionality, dynamic routing, and detailed movie views powered by a public API. Focused on reusable React components, clean UI architecture, and efficient API integration.",
-    tech: ["React", "Next.js", "Tailwind CSS", "REST API"],
-    live: "https://cinescope-yt.vercel.app", // replace later
-    github: "https://github.com/YatishPatil1234/Cine_Scope", // replace later
+      "A movie discovery platform built with Next.js 14 and TMDB API featuring dynamic routing, SSR, SEO optimization, and watchlist functionality. Designed a fully responsive UI and deployed on Vercel.",
+    tech: [
+      "Next.js 14",
+      "React.js",
+      "JavaScript",
+      "Tailwind CSS",
+      "ShadCN UI",
+      "REST API",
+      "SSR",
+      "Dynamic Routing",
+      "Vercel",
+    ],
+    live: "https://cinescope-yt.vercel.app",
+    github: "https://github.com/YatishPatil1234/Cine_Scope",
     image: "/projects/cinescope.png",
   },
   {
@@ -18,8 +28,8 @@ const projects = [
     description:
       "A responsive frontend interface designed to interact with a news classification system. Implemented form handling, API integration, and structured result presentation with a clean and user-friendly layout.",
     tech: ["HTML", "CSS", "JavaScript", "REST API"],
-    live: "#", // replace later
-    github: "#", // replace later
+    live: "", // replace later
+    github: "https://github.com/YatishPatil1234/Fake-news-detection-system", // replace later
   },
 ];
 
@@ -27,7 +37,7 @@ export default function Projects() {
   return (
     <section
       id="projects"
-      className="relative max-w-6xl mx-auto px-6 py-28 overflow-hidden"
+      className="relative max-w-6xl mx-auto px-6 pt-28 pb-0 overflow-hidden"
     >
       {/* Subtle Background Glow */}
       <div className="absolute inset-0 -z-10">
@@ -62,7 +72,7 @@ export default function Projects() {
             transition={{ delay: index * 0.15 }}
             whileHover={{ y: -6 }}
             className="
-              group relative rounded-2xl p-7
+              group relative rounded-2xl p-5
               bg-gradient-to-b from-white/[0.04] to-white/[0.02]
               border border-white/10
               backdrop-blur-sm
@@ -108,7 +118,10 @@ export default function Projects() {
               </h3>
 
               {/* Description */}
-              <p className="text-white/70 mb-6 leading-relaxed text-sm sm:text-base">
+              <p
+                title={project.description}
+                className="text-white/70 mb-6 leading-relaxed text-sm sm:text-base line-clamp-4"
+              >
                 {project.description}
               </p>
 
@@ -131,23 +144,27 @@ export default function Projects() {
 
               {/* CTA Links */}
               <div className="mt-auto flex items-center gap-6 text-sm">
-                <a
-                  href={project.live}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="font-medium text-indigo-400 hover:text-indigo-300 transition-colors"
-                >
-                  Live Demo →
-                </a>
+                {project.live && (
+                  <a
+                    href={project.live}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="font-medium text-indigo-400 hover:text-indigo-300 transition-colors"
+                  >
+                    Live Demo →
+                  </a>
+                )}
 
-                <a
-                  href={project.github}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-white/60 hover:text-white transition-colors"
-                >
-                  GitHub
-                </a>
+                {project.github && (
+                  <a
+                    href={project.github}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-white/60 hover:text-white transition-colors"
+                  >
+                    GitHub
+                  </a>
+                )}
               </div>
             </div>
           </motion.div>
