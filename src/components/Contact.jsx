@@ -168,15 +168,17 @@ export default function Contact() {
       </motion.form>
 
       {/* Direct Email */}
-      <p className="mt-8 text-center text-sm text-white/50">
-        Or email me directly at{" "}
-        <a
-          href={`mailto:${process.env.NEXT_PUBLIC_CONTACT_EMAIL}`}
-          className="text-indigo-400 hover:text-indigo-300 transition"
-        >
-          {process.env.NEXT_PUBLIC_CONTACT_EMAIL}
-        </a>
-      </p>
+      {process.env.NEXT_PUBLIC_CONTACT_EMAIL && (
+        <p className="mt-8 text-center text-sm text-white/50">
+          Or email me directly at{" "}
+          <a
+            href={`mailto:${process.env.NEXT_PUBLIC_CONTACT_EMAIL}`}
+            className="text-indigo-400 hover:text-indigo-300 transition"
+          >
+            {process.env.NEXT_PUBLIC_CONTACT_EMAIL}
+          </a>
+        </p>
+      )}
 
       <p className="mt-3 text-center text-xs text-white/40">
         I typically respond within 24–48 hours.
