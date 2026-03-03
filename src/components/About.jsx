@@ -6,7 +6,7 @@ export default function About() {
   return (
     <section
       id="about"
-      className="relative max-w-6xl mx-auto px-6 pt-20 md:pt-28 pb-0 overflow-hidden "
+      className="relative max-w-6xl mx-auto px-6 pt-10 md:pt-28 pb-0 overflow-hidden "
     >
       {/* Background Glow */}
       <div className="absolute inset-0 -z-10">
