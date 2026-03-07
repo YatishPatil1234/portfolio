@@ -19,7 +19,7 @@ const projects = [
       "Dynamic Routing",
       "Vercel",
     ],
-    live: "https://cinescope-yt.vercel.app",
+    live: "https://cinescope-yt.netlify.app/",
     github: "https://github.com/YatishPatil1234/Cine_Scope",
     image: "/projects/cinescope.png",
   },
