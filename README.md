@@ -4,7 +4,7 @@ A modern and responsive developer portfolio built with Next.js 14 and Tailwind C
 
 ## 🌐 Live Website
 
-👉 https://your-domain.dev
+👉 https://yatish.dev
 
 ## 🛠 Tech Stack
 
