@@ -24,6 +24,41 @@ const projects = [
     image: "/projects/cinescope.png",
   },
   {
+    title: "Frank Ross Pharmacy – E-Commerce Platform",
+    description:
+      "Built the complete frontend revamp of a pharmacy e-commerce platform using Next.js with SSR, improving SEO visibility, performance, and mobile responsiveness.",
+    tech: [
+      "Next.js",
+      "React.js",
+      "JavaScript",
+      "CSS Modules",
+      "REST APIs",
+      "SSR",
+      "SEO Optimization",
+    ],
+    live: "https://frankrosspharmacy.com",
+    github: "",
+    image: "/projects/frankross.png",
+  },
+  {
+    title: "PharmacyPro – Retail Management Platform",
+    description:
+      "Worked on a large-scale pharmacy retail management system, improving UI workflows across sales, billing, and inventory modules with React-based frontend development.",
+    tech: [
+      "React.js",
+      "JavaScript",
+      "REST APIs",
+      "Redux",
+      "Context API",
+      "CSS Modules",
+      "Material UI",
+      "Enterprise UI",
+    ],
+    live: "",
+    github: "",
+    image: "",
+  },
+  {
     title: "Fake News Detection UI",
     description:
       "A responsive frontend interface designed to interact with a news classification system. Implemented form handling, API integration, and structured result presentation with a clean and user-friendly layout.",
