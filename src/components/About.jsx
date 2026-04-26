@@ -6,108 +6,106 @@ export default function About() {
   return (
     <section
       id="about"
-      className="relative max-w-6xl mx-auto px-6 pt-20 md:pt-28 pb-0 overflow-hidden "
+      className="relative max-w-6xl mx-auto px-6 pt-24 md:pt-28 bg-[#050505]"
     >
-      {/* Background Glow */}
+      {/* Glow */}
       <div className="absolute inset-0 -z-10">
-        <div className="absolute top-1/4 right-1/4 w-[280px] h-[280px] md:w-[500px] md:h-[500px] bg-indigo-600/5 rounded-full blur-3xl" />
+        <div className="absolute top-1/3 right-1/4 w-[400px] h-[400px] bg-white/5 blur-3xl rounded-full" />
       </div>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-20 items-start">
-        {/* LEFT CONTENT */}
+      <div className="grid md:grid-cols-2 gap-14 items-start">
+        {/* LEFT */}
         <motion.div
-          initial={{ opacity: 0, y: 24 }}
+          initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
           className="space-y-6"
         >
-          {/* Title */}
-          <h2 className="text-3xl md:text-4xl font-bold tracking-tight">
-            About <span className="text-indigo-400">Me.</span>
+          {/* Badge */}
+          <div className="inline-flex px-3 py-1 text-xs text-[#9CA3AF] border border-white/10 bg-white/5 rounded-full">
+            About Me
+          </div>
+
+          {/* Heading */}
+          <h2 className="text-3xl md:text-4xl font-semibold text-[#E5E7EB] leading-snug max-w-xl">
+            I build <span className="text-white">scalable and reliable</span>{" "}
+            web applications
           </h2>
 
-          {/* Strong Positioning Line */}
-          <p className="text-white text-lg sm:text-xl leading-relaxed font-medium">
-            I build scalable, maintainable, and production-ready frontend
-            applications with clean architecture and performance-first thinking.
+          {/* Subtext */}
+          <p className="text-[#9CA3AF] text-sm md:text-base leading-relaxed max-w-xl">
+            Focused on performance, clean UI, and real-world production systems
+            that are easy to maintain and scale.
           </p>
 
           {/* Divider */}
           <div className="h-px w-16 bg-white/10" />
 
-          {/* Paragraphs */}
-          <p className="text-white/70 leading-relaxed text-sm sm:text-base">
-            With{" "}
-            <span className="text-white font-medium">
-              1.5 years of professional experience
-            </span>
-            , I currently work as a{" "}
-            <span className="text-white font-medium">
-              Frontend Developer at Instinct Innovations
-            </span>
-            , building responsive interfaces, integrating APIs, and contributing
-            to scalable frontend systems used in real-world environments.
-          </p>
+          {/* Content */}
+          <div className="space-y-4 text-[#9CA3AF] text-sm leading-relaxed">
+            <p>
+              With{" "}
+              <span className="text-[#E5E7EB] font-medium">
+                1.7+ years of experience
+              </span>
+              , I work at{" "}
+              <span className="text-[#E5E7EB] font-medium">
+                Instinct Innovations
+              </span>
+              , building production-ready applications used in real-world
+              environments.
+            </p>
 
-          <p className="text-white/70 leading-relaxed text-sm sm:text-base">
-            My core stack includes <span className="text-white">React</span>,{" "}
-            <span className="text-white">Next.js</span>, and{" "}
-            <span className="text-white">Tailwind CSS</span>, along with
-            experience in <span className="text-white">Redux</span>,{" "}
-            <span className="text-white">REST APIs</span>,{" "}
-            <span className="text-white">Git</span>, and modern development
-            workflows.
-          </p>
+            <p>
+              I work primarily with{" "}
+              <span className="text-[#E5E7EB]">React</span>,{" "}
+              <span className="text-[#E5E7EB]">Next.js</span>, and{" "}
+              <span className="text-[#E5E7EB]">Tailwind CSS</span>, along with
+              API integration and scalable frontend architecture.
+            </p>
 
-          <p className="text-white/70 leading-relaxed text-sm sm:text-base">
-            I focus on reusable component systems, UI consistency, and writing
-            clean code that scales as products grow.
-          </p>
+            <p>
+              I enjoy simplifying complex problems and building interfaces that
+              remain maintainable as products grow.
+            </p>
+          </div>
         </motion.div>
 
-        {/* RIGHT HIGHLIGHT CARDS */}
+        {/* RIGHT - BETTER CONTENT */}
         <motion.div
-          initial={{ opacity: 0, y: 24 }}
+          initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.6, delay: 0.1 }}
-          className="grid grid-cols-1 sm:grid-cols-2 gap-6"
+          transition={{ delay: 0.1 }}
+          className="space-y-4"
         >
-          <Highlight title="1.5+" subtitle="Years Experience" />
-          <Highlight title="Production" subtitle="Real-world Projects" />
-          <Highlight title="Component" subtitle="Architecture Focus" />
-          <Highlight title="Performance" subtitle="UI Optimization" />
+          <InfoCard label="Experience" value="1.7+ Years" />
+          <InfoCard label="Work" value="Production Applications" />
+          <InfoCard label="SEO Achievement" value="Lighthouse Score 100" />
+          <InfoCard label="Focus" value="UI, Performance, APIs" />
         </motion.div>
       </div>
     </section>
   );
 }
 
-/* PREMIUM HIGHLIGHT CARD */
-function Highlight({ title, subtitle }) {
+/* INFO CARD (MORE MODERN THAN BOX GRID) */
+function InfoCard({ label, value }) {
   return (
     <motion.div
-      whileHover={{ y: -6 }}
+      whileHover={{ x: 4 }}
       className="
-        group relative rounded-2xl p-6 text-center
-        bg-gradient-to-b from-white/[0.04] to-white/[0.02]
+        flex items-center justify-between
+        px-5 py-4
+        rounded-lg
+        bg-[#0a0a0a]
         border border-white/10
-        backdrop-blur-sm
-        transition-all duration-300
-        hover:border-indigo-400/50
+        hover:border-white/20
+        transition
       "
     >
-      {/* Hover Glow */}
-      <div className="absolute inset-0 rounded-2xl bg-indigo-500/10 opacity-0 group-hover:opacity-100 transition duration-300" />
-
-      <p className="relative z-10 text-3xl font-bold text-indigo-400 tracking-tight">
-        {title}
-      </p>
-
-      <p className="relative z-10 text-xs uppercase tracking-wide text-white/60 mt-2">
-        {subtitle}
-      </p>
+      <span className="text-sm text-[#6B7280]">{label}</span>
+      <span className="text-sm text-[#E5E7EB] font-medium">{value}</span>
     </motion.div>
   );
 }

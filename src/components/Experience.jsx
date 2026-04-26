@@ -4,16 +4,30 @@ import { motion } from "framer-motion";
 
 const experiences = [
   {
-    role: "Associate Software Engineer",
+    role: "Frontend Developer",
     company: "Instinct Innovations",
     period: "Sep 2024 – Present",
+    location: "Mumbai, India",
+    highlight: "Lighthouse SEO Score 100",
     points: [
-      "Revamped the frontend of a pharmacy e-commerce platform using Next.js with SSR, improving SEO visibility and performance.",
-      "Developed reusable UI components and scalable page structures for production applications.",
-      "Integrated REST APIs and collaborated with backend teams to ensure reliable data rendering.",
-      "Enhanced enterprise retail management modules including sales, billing, and inventory workflows.",
+      "Built a production-grade pharmacy e-commerce platform (FrankRoss) using Next.js (SSR), improving SEO and performance.",
+      "Integrated REST APIs across product, cart, checkout, and billing for seamless data flow.",
+      "Developed reusable UI components, improving scalability and maintainability.",
+      "Worked on PharmacyPro system handling sales, billing, inventory, and reporting workflows.",
+      "Implemented GST-compliant E-Invoice and E-Way Bill features.",
     ],
-    tech: ["React", "Next.js", "Redux", "REST APIs", "CSS Modules"],
+    tech: [
+      "React",
+      "Next.js (SSR)",
+      "TypeScript",
+      "JavaScript",
+      "Redux Toolkit",
+      "REST APIs",
+      "Axios",
+      "PostgreSQL",
+      "HTML5",
+      "CSS3",
+    ],
   },
 ];
 
@@ -21,87 +35,108 @@ export default function Experience() {
   return (
     <section
       id="experience"
-      className="relative max-w-6xl mx-auto px-6 pt-28 pb-0 overflow-hidden"
+      className="relative max-w-6xl mx-auto px-6 pt-24 md:pt-28 bg-[#050505]"
     >
       {/* Glow */}
       <div className="absolute inset-0 -z-10">
-        <div className="absolute top-1/3 right-1/3 w-[350px] h-[350px] md:w-[550px] md:h-[550px] bg-indigo-600/5 rounded-full blur-3xl" />
+        <div className="absolute top-1/3 left-1/2 -translate-x-1/2 w-[450px] h-[450px] bg-white/5 blur-3xl rounded-full" />
       </div>
 
       {/* Header */}
       <motion.div
-        initial={{ opacity: 0, y: 30 }}
+        initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
-        transition={{ duration: 0.6 }}
-        className="mb-20 text-center"
+        className="mb-14 text-center"
       >
-        <h2 className="text-3xl md:text-4xl font-bold tracking-tight">
-          Work <span className="text-indigo-400">Experience</span>
+        <h2 className="text-2xl md:text-3xl font-semibold text-[#E5E7EB]">
+          Experience
         </h2>
 
-        <p className="mt-4 text-white/60 max-w-xl mx-auto text-sm sm:text-base">
-          My professional experience building real-world frontend systems.
+        <p className="mt-2 text-[#9CA3AF] text-sm md:text-base max-w-xl mx-auto">
+          Real-world experience building scalable production applications.
         </p>
       </motion.div>
 
       {/* Timeline */}
-      <div className="relative border-l border-white/10 ml-3 space-y-12">
+      <div className="relative ml-2">
+        {/* Line */}
+        <div className="absolute left-0 top-0 h-full w-[1px] bg-white/10" />
+
         {experiences.map((exp, index) => (
           <motion.div
             key={exp.company}
-            initial={{ opacity: 0, y: 30 }}
+            initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: index * 0.1 }}
-            className="relative md:pl-10 pl-6"
+            className="relative pl-6 pb-12"
           >
             {/* Dot */}
-            <span className="absolute left-[-6px] top-2 w-3 h-3 bg-indigo-400 rounded-full" />
+            <span className="absolute -left-[5px] top-2 w-2.5 h-2.5 rounded-full bg-white/40" />
 
             {/* Card */}
-            <div
-              className="
-              group relative rounded-2xl p-6
-              bg-gradient-to-b from-white/[0.04] to-white/[0.02]
-              border border-white/10
-              backdrop-blur-sm
-              transition-all duration-300
-              hover:border-indigo-400/40
-              "
+            <motion.div
+              whileHover={{ y: -2 }}
+              className="bg-[#0a0a0a] border border-white/10 rounded-xl p-6 hover:border-white/20 transition"
             >
-              <div className="absolute inset-0 rounded-2xl bg-indigo-500/10 opacity-0 group-hover:opacity-100 transition duration-300" />
+              {/* Top */}
+              <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-2">
+                <div>
+                  <h3 className="text-lg font-semibold text-[#E5E7EB]">
+                    {exp.role}
+                  </h3>
 
-              <div className="relative z-10">
-                <h3 className="text-lg font-semibold text-white">{exp.role}</h3>
-
-                <p className="text-indigo-400 text-sm mt-1">
-                  {exp.company} • {exp.period}
-                </p>
-
-                <ul className="text-white/70 mt-4 text-sm space-y-2 list-disc list-inside">
-                  {exp.points.map((point, i) => (
-                    <li key={i}>{point}</li>
-                  ))}
-                </ul>
-
-                <div className="flex flex-wrap gap-2 mt-4">
-                  {exp.tech.map((t) => (
-                    <span
-                      key={t}
-                      className="
-                        px-3 py-1 text-xs rounded-full
-                        bg-white/5
-                        text-white/80
-                        border border-white/10
-                      "
-                    >
-                      {t}
-                    </span>
-                  ))}
+                  <p className="text-sm text-[#9CA3AF] mt-1">
+                    {exp.company} • {exp.location}
+                  </p>
                 </div>
+
+                <span className="text-xs text-[#6B7280]">{exp.period}</span>
               </div>
-            </div>
+
+              {/* Highlight */}
+              <div className="mt-4 inline-flex px-3 py-1.5 text-xs rounded-full bg-[#0f0f0f] border border-white/10 text-[#E5E7EB]">
+                {exp.highlight}
+              </div>
+
+              {/* Points */}
+              <ul className="mt-4 space-y-2">
+                {exp.points.map((point, i) => (
+                  <li
+                    key={i}
+                    className="text-sm text-[#9CA3AF] leading-relaxed flex gap-2"
+                  >
+                    <span className="text-white/30 mt-[6px] text-[10px]">
+                      •
+                    </span>
+                    <span>{point}</span>
+                  </li>
+                ))}
+              </ul>
+
+              {/* Tech */}
+              <div className="flex flex-wrap gap-2 mt-5">
+                {exp.tech.map((t) => (
+                  <span
+                    key={t}
+                    className="
+                      px-3 py-1.5
+                      text-xs
+                      rounded-md
+                      bg-[#0f0f0f]
+                      border border-white/10
+                      text-[#E5E7EB]
+                      hover:border-white/20
+                      hover:-translate-y-[1px]
+                      transition
+                    "
+                  >
+                    {t}
+                  </span>
+                ))}
+              </div>
+            </motion.div>
           </motion.div>
         ))}
       </div>

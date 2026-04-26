@@ -4,20 +4,36 @@ import { motion } from "framer-motion";
 
 const skillGroups = [
   {
-    title: "Core Technologies",
-    skills: ["HTML", "CSS", "JavaScript", "React", "Next.js"],
+    title: "Languages",
+    skills: ["JavaScript", "TypeScript", "Core Java", "SQL"],
   },
   {
-    title: "UI Systems",
-    skills: ["Tailwind CSS", "shadcn/ui"],
+    title: "Web Technologies",
+    skills: [
+      "HTML5",
+      "CSS3",
+      "Responsive Design",
+      "REST APIs",
+      "Component Architecture",
+    ],
   },
   {
-    title: "State & Data",
-    skills: ["Redux", "REST APIs", "SQL"],
+    title: "Frameworks & Libraries",
+    skills: [
+      "React.js",
+      "Next.js (SSR)",
+      "Redux Toolkit",
+      "Tailwind CSS",
+      "CSS Modules",
+    ],
   },
   {
-    title: "Tooling & Workflow",
-    skills: ["Git", "GitHub", "Postman", "VS Code"],
+    title: "Databases",
+    skills: ["PostgreSQL"],
+  },
+  {
+    title: "Developer Tools",
+    skills: ["Git", "GitHub", "VS Code", "Postman", "Chrome DevTools", "npm"],
   },
 ];
 
@@ -25,79 +41,77 @@ export default function Skills() {
   return (
     <section
       id="skills"
-      className="relative max-w-6xl mx-auto px-6 pt-28 pb-0 overflow-hidden"
+      className="relative max-w-6xl mx-auto px-6 pt-28 pb-16 bg-[#050505]"
     >
-      {/* Background Glow */}
+      {/* Glow */}
       <div className="absolute inset-0 -z-10">
-        <div className="absolute bottom-1/3 left-1/3 w-[320px] h-[320px] md:w-[520px] md:h-[520px] bg-indigo-600/5 rounded-full blur-3xl" />
+        <div className="absolute bottom-1/3 left-1/2 -translate-x-1/2 w-[450px] h-[450px] bg-white/5 blur-3xl rounded-full opacity-40" />
       </div>
 
       {/* Header */}
       <motion.div
-        initial={{ opacity: 0, y: 30 }}
+        initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
-        transition={{ duration: 0.6 }}
-        className="mb-20 text-center"
+        className="mb-16 text-center"
       >
-        <h2 className="text-3xl md:text-4xl font-bold tracking-tight">
-          Skills & <span className="text-indigo-400">Technologies</span>
+        {/* Badge */}
+        <div className="inline-flex px-3 py-1 text-xs text-[#9CA3AF] border border-white/10 bg-white/5 rounded-full mb-4">
+          Skills
+        </div>
+
+        <h2 className="text-3xl md:text-4xl font-semibold text-[#E5E7EB]">
+          Skills & Technologies
         </h2>
 
-        <p className="mt-4 text-white/60 max-w-xl mx-auto text-sm sm:text-base">
-          Technologies I use to build scalable and production-ready frontend
-          systems.
+        <p className="mt-3 text-[#9CA3AF] text-base max-w-xl mx-auto">
+          Technologies and tools I use in real-world development
         </p>
       </motion.div>
 
       {/* Grid */}
-      <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-8">
+      <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
         {skillGroups.map((group, index) => (
           <motion.div
             key={group.title}
-            initial={{ opacity: 0, y: 30 }}
+            initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
+            transition={{ delay: index * 0.08 }}
             viewport={{ once: true }}
-            transition={{ delay: index * 0.1 }}
-            whileHover={{ y: -6 }}
+            whileHover={{ y: -3 }}
             className="
-              group relative rounded-2xl p-5
-              bg-gradient-to-b from-white/[0.05] to-white/[0.02]
+              rounded-xl p-5
+              bg-[#0a0a0a]/80 backdrop-blur-xl
               border border-white/10
-              backdrop-blur-sm
-              transition-all duration-300
-              hover:border-indigo-400/40
+              hover:border-white/20
+              transition
             "
           >
-            {/* Hover Glow */}
-            <div className="absolute inset-0 rounded-2xl bg-indigo-500/10 opacity-0 group-hover:opacity-100 transition duration-300" />
+            {/* Title */}
+            <h3 className="text-sm font-semibold text-[#E5E7EB] mb-4 tracking-wide">
+              {group.title}
+            </h3>
 
-            <div className="relative z-10 space-y-7">
-              {/* Category Title */}
-              <h3 className="text-xl font-semibold tracking-tight">
-                {group.title}
-              </h3>
-
-              {/* Skill Chips */}
-              <div className="flex flex-wrap gap-3">
-                {group.skills.map((skill) => (
-                  <span
-                    key={skill}
-                    className="
-                      px-3 py-1.5 text-sm rounded-full
-                      bg-white/5
-                      text-white/80
-                      border border-white/10
-                      transition-all duration-300
-                      hover:bg-indigo-500/20
-                      hover:border-indigo-400/40
-                      hover:text-indigo-300
-                    "
-                  >
-                    {skill}
-                  </span>
-                ))}
-              </div>
+            {/* Skills */}
+            <div className="flex flex-wrap gap-2">
+              {group.skills.map((skill) => (
+                <span
+                  key={skill}
+                  className="
+                    px-3 py-1.5
+                    text-xs font-medium
+                    rounded-md
+                    bg-[#0f0f0f]
+                    border border-white/10
+                    text-[#E5E7EB]
+                    hover:border-white/30
+                    hover:-translate-y-[1px]
+                    transition
+                  "
+                >
+                  {skill}
+                </span>
+              ))}
             </div>
           </motion.div>
         ))}

@@ -5,116 +5,91 @@ import { motion } from "framer-motion";
 
 export default function Hero() {
   return (
-    <section className="relative min-h-[85vh] md:min-h-screen pt-32 md:pt-32 flex items-start md:items-center justify-center overflow-hidden">
-      {/* Background Glow */}
+    <section className="relative min-h-screen flex items-center justify-center bg-[#050505] overflow-hidden">
+      {/* Glow */}
       <div className="absolute inset-0 -z-10">
-        <div
-          className="absolute top-1/3 left-1/2 -translate-x-1/2 
-          w-[350px] h-[350px] 
-          md:w-[600px] md:h-[600px] 
-          bg-indigo-600/10 rounded-full blur-3xl"
-        />
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[900px] h-[900px] bg-white/5 blur-3xl rounded-full opacity-60" />
       </div>
 
-      <div className="max-w-6xl mx-auto px-6 text-center">
+      <div className="max-w-4xl mx-auto px-6 text-center">
         <motion.div
           initial="hidden"
           animate="visible"
           variants={{
             hidden: {},
-            visible: { transition: { staggerChildren: 0.15 } },
+            visible: { transition: { staggerChildren: 0.1 } },
           }}
-          className="space-y-6 md:space-y-8"
+          className="space-y-8"
         >
           {/* Badge */}
           <motion.p
-            variants={{
-              hidden: { opacity: 0, y: 20 },
-              visible: { opacity: 1, y: 0 },
-            }}
-            className="inline-block px-4 py-1 text-xs md:text-sm tracking-wide text-indigo-300 bg-indigo-500/10 border border-indigo-500/20 rounded-full"
+            variants={{ hidden: { opacity: 0 }, visible: { opacity: 1 } }}
+            className="inline-flex items-center gap-2 px-4 py-1.5 text-xs text-[#9CA3AF] bg-white/5 border border-white/10 rounded-full"
           >
-            Frontend Developer • 1.5 YOE
+            <span className="w-2 h-2 bg-white/40 rounded-full animate-pulse" />
+            Frontend Developer • 1.7+ Years
           </motion.p>
 
-          {/* Headline */}
+          {/* Heading */}
           <motion.h1
             variants={{
               hidden: { opacity: 0, y: 20 },
               visible: { opacity: 1, y: 0 },
             }}
-            className="text-3xl sm:text-4xl md:text-6xl font-semibold tracking-tight leading-tight"
+            className="text-4xl sm:text-5xl md:text-6xl font-semibold leading-[1.15] text-[#E5E7EB] max-w-3xl mx-auto"
           >
-            Hi, I’m <span className="text-white">Yatish</span>
-            <br />I build{" "}
-            <span className="bg-gradient-to-r from-indigo-400 to-indigo-300 bg-clip-text text-transparent">
-              modern web interfaces
-            </span>
+            I build <span className="text-white">modern web</span>
+            <br />
+            applications
           </motion.h1>
 
-          {/* Description */}
+          {/* Supporting */}
           <motion.p
-            variants={{
-              hidden: { opacity: 0, y: 20 },
-              visible: { opacity: 1, y: 0 },
-            }}
-            className="text-white/70 max-w-xl md:max-w-2xl mx-auto text-sm sm:text-base md:text-lg leading-relaxed"
+            variants={{ hidden: { opacity: 0 }, visible: { opacity: 1 } }}
+            className="text-base md:text-lg text-[#9CA3AF] max-w-xl mx-auto leading-relaxed"
           >
-            Specializing in <span className="text-white">React</span>,{" "}
-            <span className="text-white">Next.js</span>, and{" "}
-            <span className="text-white">Tailwind CSS</span>, I build scalable
-            frontend applications with strong UI architecture, reusable
-            component systems, and performance-first development.
+            Focused on performance, clean UI, and real-world production systems
           </motion.p>
 
-          {/* CTAs */}
-          <motion.div
-            variants={{
-              hidden: { opacity: 0, y: 20 },
-              visible: { opacity: 1, y: 0 },
-            }}
-            className="flex flex-col sm:flex-row justify-center gap-4 pt-4 md:pt-6 w-full"
+          {/* Tech */}
+          <motion.p
+            variants={{ hidden: { opacity: 0 }, visible: { opacity: 1 } }}
+            className="text-sm text-[#6B7280]"
           >
-            {/* View Projects */}
-            <motion.div
-              whileHover={{ y: -3 }}
-              whileTap={{ scale: 0.97 }}
-              className="w-full sm:w-auto"
-            >
-              <Button
-                size="lg"
-                className="w-full sm:w-auto px-8 py-5 cursor-pointer bg-indigo-500 hover:bg-indigo-600 text-white shadow-lg shadow-indigo-500/20 transition-all duration-300"
-                onClick={() => {
-                  document
-                    .getElementById("projects")
-                    ?.scrollIntoView({ behavior: "smooth", block: "start" });
-                }}
-              >
-                View Projects
-              </Button>
-            </motion.div>
+            React • Next.js • Tailwind • REST APIs
+          </motion.p>
 
-            {/* Download Resume */}
-            <motion.div
-              whileHover={{ y: -3 }}
-              whileTap={{ scale: 0.97 }}
-              className="w-full sm:w-auto"
+          {/* Divider */}
+          <motion.div
+            variants={{ hidden: { opacity: 0 }, visible: { opacity: 1 } }}
+            className="w-16 h-[1px] bg-white/10 mx-auto"
+          />
+
+          {/* CTA */}
+          <motion.div
+            variants={{ hidden: { opacity: 0 }, visible: { opacity: 1 } }}
+            className="flex justify-center gap-4 pt-2 flex-wrap"
+          >
+            <Button
+              className="px-7 py-3 bg-white text-black text-sm font-medium hover:bg-white/90 transition shadow-lg hover:shadow-white/10 cursor-pointer"
+              asChild
+            >
+              <a href="#projects">View Projects</a>
+            </Button>
+
+            <Button
+              variant="outline"
+              className="px-7 py-3 text-[#E5E7EB] border border-white/10 hover:bg-white/5 text-sm transition cursor-pointer"
+              asChild
             >
               <a
-                href="/resume/Yatish_Patil_Frontend_Developer_1.5YOE.pdf"
-                download
+                href="/resume/Yatish_Patil_Frontend_Developer.pdf"
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                <Button
-                  size="lg"
-                  variant="outline"
-                  className="w-full sm:w-auto px-8 py-5 cursor-pointer border-white/20 text-white/70 hover:text-white hover:bg-white/5 transition-all duration-300"
-                >
-                  Download Resume
-                </Button>
+                Resume
               </a>
-            </motion.div>
+            </Button>
           </motion.div>
         </motion.div>
       </div>

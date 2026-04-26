@@ -5,66 +5,34 @@ import Image from "next/image";
 
 const projects = [
   {
-    title: "CineScope – Movie Discovery Platform",
+    title: "CineScope",
     description:
-      "A movie discovery platform built with Next.js 14 and TMDB API featuring dynamic routing, SSR, SEO optimization, and watchlist functionality. Designed a fully responsive UI and deployed on Vercel.",
+      "Production-ready movie discovery platform built with Next.js 14 and TMDB API. Implemented SSR, dynamic routing, SEO optimization, and watchlist functionality with a fully responsive UI.",
     tech: [
-      "Next.js 14",
-      "React.js",
-      "JavaScript",
-      "Tailwind CSS",
-      "ShadCN UI",
-      "REST API",
+      "Next.js",
+      "React",
+      "Tailwind",
       "SSR",
       "Dynamic Routing",
-      "Vercel",
+      "REST APIs",
     ],
     live: "https://cinescope-yt.netlify.app/",
     github: "https://github.com/YatishPatil1234/Cine_Scope",
     image: "/projects/cinescope.png",
   },
   {
-    title: "Frank Ross Pharmacy – E-Commerce Platform",
+    title: "FrankRoss Pharmacy",
     description:
-      "Built the complete frontend revamp of a pharmacy e-commerce platform using Next.js with SSR, improving SEO visibility, performance, and mobile responsiveness.",
-    tech: [
-      "Next.js",
-      "React.js",
-      "JavaScript",
-      "CSS Modules",
-      "REST APIs",
-      "SSR",
-      "SEO Optimization",
-    ],
+      "Production-grade pharmacy e-commerce platform built with Next.js (SSR), improving SEO, performance, and scalable UI architecture. Achieved Lighthouse SEO score of 100.",
+    tech: ["Next.js", "React", "TypeScript", "Redux", "Tailwind", "REST APIs"],
     live: "https://frankrosspharmacy.com",
-    github: "",
     image: "/projects/frankross.png",
   },
   {
-    title: "PharmacyPro – Retail Management Platform",
+    title: "PharmacyPro",
     description:
-      "Worked on a large-scale pharmacy retail management system, improving UI workflows across sales, billing, and inventory modules with React-based frontend development.",
-    tech: [
-      "React.js",
-      "JavaScript",
-      "REST APIs",
-      "Redux",
-      "Context API",
-      "CSS Modules",
-      "Material UI",
-      "Enterprise UI",
-    ],
-    live: "",
-    github: "",
-    image: "",
-  },
-  {
-    title: "Fake News Detection UI",
-    description:
-      "A responsive frontend interface designed to interact with a news classification system. Implemented form handling, API integration, and structured result presentation with a clean and user-friendly layout.",
-    tech: ["HTML", "CSS", "JavaScript", "REST API"],
-    live: "", // replace later
-    github: "https://github.com/YatishPatil1234/Fake-news-detection-system", // replace later
+      "Retail pharmacy management system handling billing, inventory, and reporting workflows. Implemented GST E-Invoice, API integrations, and improved system stability.",
+    tech: ["React", "Next.js", "JavaScript", "REST APIs", "PostgreSQL", "SQL"],
   },
 ];
 
@@ -72,121 +40,134 @@ export default function Projects() {
   return (
     <section
       id="projects"
-      className="relative max-w-6xl mx-auto px-6 pt-28 pb-0 overflow-hidden"
+      className="relative max-w-6xl mx-auto px-6 pt-28 pb-16 bg-[#050505]"
     >
-      {/* Subtle Background Glow */}
+      {/* Glow */}
       <div className="absolute inset-0 -z-10">
-        <div className="absolute top-1/3 left-1/2 -translate-x-1/2 w-[350px] h-[350px] md:w-[600px] md:h-[600px] bg-indigo-600/5 rounded-full blur-3xl" />
+        <div className="absolute top-1/3 left-1/2 -translate-x-1/2 w-[600px] h-[600px] bg-white/5 blur-3xl rounded-full opacity-40" />
       </div>
 
-      {/* Section Header */}
+      {/* Header */}
       <motion.div
-        initial={{ opacity: 0, y: 30 }}
+        initial={{ opacity: 0, y: 24 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
-        transition={{ duration: 0.6 }}
-        className="mb-20 text-center"
+        className="mb-16 text-center"
       >
-        <h2 className="text-3xl md:text-4xl font-semibold tracking-tight">
-          Featured <span className="text-indigo-400">Projects</span>
+        <div className="inline-flex px-3 py-1 text-xs text-[#9CA3AF] border border-white/10 bg-white/5 rounded-full mb-4">
+          Projects
+        </div>
+
+        <h2 className="text-3xl md:text-4xl font-semibold text-[#E5E7EB]">
+          Featured Work
         </h2>
-        <p className="mt-4 text-white/60 max-w-2xl mx-auto text-sm sm:text-base">
-          Frontend projects demonstrating UI architecture, API integration, and
-          production-ready development practices.
+
+        <p className="mt-3 text-[#9CA3AF] max-w-xl mx-auto text-sm md:text-base">
+          Real-world applications focused on performance and usability
         </p>
       </motion.div>
 
-      {/* Projects Grid */}
-      <div className="grid md:grid-cols-2 gap-12">
+      {/* Grid */}
+      <div className="grid md:grid-cols-2 gap-8">
         {projects.map((project, index) => (
           <motion.div
             key={project.title}
-            initial={{ opacity: 0, y: 40 }}
+            initial={{ opacity: 0, y: 24 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            transition={{ delay: index * 0.15 }}
+            transition={{ delay: index * 0.08 }}
             whileHover={{ y: -6 }}
             className="
-              group relative rounded-2xl p-5
-              bg-gradient-to-b from-white/[0.04] to-white/[0.02]
+              group rounded-xl overflow-hidden
+              bg-[#0a0a0a]/80 backdrop-blur-xl
               border border-white/10
-              backdrop-blur-sm
+              hover:border-white/20
               transition-all duration-300
-              hover:border-indigo-400/40
-              "
+            "
           >
-            {/* Hover Glow */}
-            <div className="absolute inset-0 rounded-2xl bg-indigo-500/10 opacity-0 group-hover:opacity-100 transition duration-300" />
+            {/* IMAGE */}
+            <div className="relative aspect-video overflow-hidden border-b border-white/10 bg-black">
+              {project.image ? (
+                <>
+                  <Image
+                    src={project.image}
+                    alt={project.title}
+                    fill
+                    className="object-contain object-top transition-transform duration-500 group-hover:scale-105"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent" />
+                </>
+              ) : (
+                <div className="flex items-center justify-center h-full text-[#6B7280] text-sm">
+                  No Preview
+                </div>
+              )}
+            </div>
 
-            <div className="relative z-10 flex flex-col h-full">
-              {/* Screenshot Placeholder (Improved) */}
-              {/* Project Preview */}
-              <div className="relative mb-6 aspect-video rounded-xl overflow-hidden border border-white/10 bg-black/60">
-                {project?.image ? (
-                  <>
-                    <Image
-                      src={project.image}
-                      alt={`${project.title} Preview`}
-                      fill
-                      sizes="(max-width: 768px) 100vw, 50vw"
-                      quality={100}
-                      className="
-          object-contain
-          transition-transform duration-500
-          group-hover:scale-105
-        "
-                    />
-
-                    {/* soft cinematic overlay */}
-                    <div className="absolute inset-0 bg-black/20 group-hover:bg-black/10 transition" />
-                  </>
-                ) : (
-                  <div className="w-full h-full flex items-center justify-center text-white/30 text-sm bg-gradient-to-br from-indigo-500/10 to-indigo-500/5">
-                    Project Preview
-                  </div>
-                )}
-              </div>
-
-              {/* Title */}
-              <h3 className="text-xl font-bold tracking-tight mb-3">
+            {/* CONTENT */}
+            <div className="p-6 space-y-4">
+              <h3 className="text-lg font-semibold text-[#E5E7EB]">
                 {project.title}
               </h3>
 
-              {/* Description */}
-              <p
-                title={project.description}
-                className="text-white/70 mb-6 leading-relaxed text-sm sm:text-base line-clamp-4"
-              >
+              <p className="text-[#9CA3AF] text-sm leading-relaxed">
                 {project.description}
               </p>
 
-              {/* Tech Stack */}
-              <div className="flex flex-wrap gap-2 mb-6">
+              {/* TECH */}
+              <div className="flex flex-wrap gap-2">
                 {project.tech.map((tech) => (
                   <span
                     key={tech}
                     className="
-                px-3 py-1 text-xs rounded-full
-                bg-white/5
-                text-white/80
-                border border-white/10
-              "
+                      px-3 py-1.5
+                      text-xs
+                      rounded-md
+                      bg-[#0f0f0f]
+                      border border-white/10
+                      text-[#E5E7EB]
+                      hover:border-white/30
+                      transition
+                    "
                   >
                     {tech}
                   </span>
                 ))}
               </div>
 
-              {/* CTA Links */}
-              <div className="mt-auto flex items-center gap-6 text-sm">
+              {/* ACTIONS */}
+              <div className="flex items-center gap-3 pt-3 flex-wrap">
                 {project.live && (
                   <a
                     href={project.live}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="font-medium text-indigo-400 hover:text-indigo-300 transition-colors"
+                    className="
+                      flex items-center gap-2
+                      px-4 py-2
+                      text-xs font-medium
+                      rounded-md
+                      bg-white text-black
+                      hover:bg-white/90
+                      active:scale-[0.97]
+                      transition
+                    "
                   >
-                    Live Demo →
+                    {/* 🔥 Better Live Icon */}
+                    <svg
+                      width="14"
+                      height="14"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      strokeWidth="2"
+                    >
+                      <path d="M14 3h7v7" />
+                      <path d="M10 14L21 3" />
+                      <path d="M21 14v7h-7" />
+                      <path d="M3 10v11h11" />
+                    </svg>
+                    Live
                   </a>
                 )}
 
@@ -195,8 +176,27 @@ export default function Projects() {
                     href={project.github}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="text-white/60 hover:text-white transition-colors"
+                    className="
+                      flex items-center gap-2
+                      px-4 py-2
+                      text-xs font-medium
+                      rounded-md
+                      border border-white/10
+                      text-[#9CA3AF]
+                      hover:text-white
+                      hover:border-white/30
+                      active:scale-[0.97]
+                      transition
+                    "
                   >
+                    <svg
+                      width="14"
+                      height="14"
+                      fill="currentColor"
+                      viewBox="0 0 24 24"
+                    >
+                      <path d="M12 .5C5.65.5.5 5.65.5 12a11.5 11.5 0 008 10.94c.6.11.82-.26.82-.58v-2.17c-3.26.71-3.95-1.57-3.95-1.57-.53-1.34-1.3-1.7-1.3-1.7-1.06-.72.08-.7.08-.7 1.18.08 1.8 1.2 1.8 1.2 1.04 1.8 2.72 1.28 3.38.98.1-.76.4-1.28.72-1.57-2.6-.3-5.34-1.3-5.34-5.8 0-1.28.46-2.32 1.2-3.14-.12-.3-.52-1.52.12-3.16 0 0 .98-.31 3.2 1.2a11.1 11.1 0 015.82 0c2.22-1.51 3.2-1.2 3.2-1.2.64 1.64.24 2.86.12 3.16.74.82 1.2 1.86 1.2 3.14 0 4.52-2.75 5.5-5.36 5.8.42.36.8 1.08.8 2.18v3.23c0 .32.22.7.83.58A11.5 11.5 0 0023.5 12C23.5 5.65 18.35.5 12 .5z" />
+                    </svg>
                     GitHub
                   </a>
                 )}

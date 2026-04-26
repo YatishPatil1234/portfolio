@@ -35,8 +35,8 @@ export default function Contact() {
 
       setSuccess(true);
       setForm({ name: "", email: "", message: "" });
-    } catch (err) {
-      setError("Failed to send message. Please try again.");
+    } catch {
+      setError("Failed to send message.");
     }
 
     setLoading(false);
@@ -45,144 +45,137 @@ export default function Contact() {
   return (
     <section
       id="contact"
-      className="relative max-w-6xl mx-auto px-6 pt-28 pb-0 overflow-hidden"
+      className="relative max-w-6xl mx-auto px-6 pt-28 pb-20 bg-[#050505]"
     >
-      {/* Background Glow */}
+      {/* Glow */}
       <div className="absolute inset-0 -z-10">
-        <div className="absolute bottom-1/3 left-1/2 -translate-x-1/2 w-[350px] h-[350px] md:w-[550px] md:h-[550px] bg-indigo-600/5 rounded-full blur-3xl" />
+        <div className="absolute bottom-1/3 left-1/2 -translate-x-1/2 w-[450px] h-[450px] bg-white/5 blur-3xl rounded-full opacity-40" />
       </div>
 
       {/* Header */}
       <motion.div
-        initial={{ opacity: 0, y: 30 }}
+        initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true }}
-        transition={{ duration: 0.6 }}
-        className="mb-20 text-center"
+        className="mb-14 text-center"
       >
-        <h2 className="text-3xl md:text-4xl font-bold tracking-tight">
-          Let’s Work <span className="text-indigo-400">Together</span>
+        {/* Badge */}
+        <div className="inline-flex px-3 py-1 text-xs text-[#9CA3AF] border border-white/10 bg-white/5 rounded-full mb-4">
+          Contact
+        </div>
+
+        <h2 className="text-3xl md:text-4xl font-semibold text-[#E5E7EB]">
+          Let’s Work Together
         </h2>
 
-        <p className="mt-4 text-white/60 max-w-xl mx-auto text-sm sm:text-base">
-          Open to frontend roles, freelance opportunities, or meaningful
-          collaboration.
+        <p className="mt-3 text-[#9CA3AF] text-base max-w-xl mx-auto">
+          Have a project or opportunity? Feel free to reach out.
         </p>
       </motion.div>
 
-      {/* Form Card */}
+      {/* Form */}
       <motion.form
         onSubmit={handleSubmit}
-        initial={{ opacity: 0, y: 30 }}
+        initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true }}
-        transition={{ duration: 0.6, delay: 0.1 }}
         className="
-          relative max-w-xl mx-auto
-          rounded-2xl p-8
-          bg-gradient-to-b from-white/[0.04] to-white/[0.02]
+          max-w-lg mx-auto
+          bg-[#0a0a0a]/80 backdrop-blur-xl
           border border-white/10
-          backdrop-blur-sm
+          rounded-xl
+          p-6
           space-y-5
         "
       >
-        {/* Input Field Component */}
+        {/* Inputs */}
         {["name", "email"].map((field) => (
           <input
             key={field}
             name={field}
             type={field === "email" ? "email" : "text"}
-            placeholder={field === "email" ? "Email Address" : "Your Name"}
+            placeholder={field === "email" ? "Email address" : "Your name"}
             value={form[field]}
             onChange={handleChange}
             required
             className="
-              w-full px-4 py-3 rounded-lg
-              bg-black/40
+              w-full px-4 py-2.5
+              text-sm
+              bg-[#050505]
               border border-white/10
-              text-white
-              placeholder:text-white/40
+              rounded-md
+              text-[#E5E7EB]
+              placeholder:text-[#6B7280]
               focus:outline-none
-              focus:ring-2 focus:ring-indigo-500/40
-              focus:border-indigo-400
+              focus:border-white/30
+              focus:ring-1 focus:ring-white/20
               transition
             "
           />
         ))}
 
+        {/* Message */}
         <textarea
           name="message"
-          placeholder="Your Message"
           rows={4}
+          placeholder="Tell me about your project..."
           value={form.message}
           onChange={handleChange}
           required
           className="
-            w-full px-4 py-3 rounded-lg
-            bg-black/40
+            w-full px-4 py-2.5
+            text-sm
+            bg-[#050505]
             border border-white/10
-            text-white
-            placeholder:text-white/40
+            rounded-md
+            text-[#E5E7EB]
+            placeholder:text-[#6B7280]
             focus:outline-none
-            focus:ring-2 focus:ring-indigo-500/40
-            focus:border-indigo-400
-            transition resize-none
+            focus:border-white/30
+            focus:ring-1 focus:ring-white/20
+            transition
+            resize-none
           "
         />
 
+        {/* Button */}
         <button
           type="submit"
           disabled={loading}
           className="
-            w-full py-3 rounded-lg
-            bg-indigo-500 hover:bg-indigo-600
-            text-white font-medium
-            shadow-lg shadow-indigo-500/20
-            transition-all duration-300
-            disabled:opacity-60
+            w-full py-2.5
+            text-sm font-medium
+            bg-white text-black
+            rounded-md
+            hover:bg-white/90
+            transition
             cursor-pointer
+            active:scale-[0.98]
+            disabled:opacity-50
+            disabled:cursor-not-allowed
           "
         >
           {loading ? "Sending..." : "Send Message"}
         </button>
 
+        {/* Feedback */}
         {success && (
-          <motion.p
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            className="text-green-400 text-sm text-center"
-          >
-            ✅ Message sent successfully!
-          </motion.p>
+          <p className="text-green-400 text-xs text-center">
+            Message sent successfully
+          </p>
         )}
 
-        {error && (
-          <motion.p
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            className="text-red-400 text-sm text-center"
-          >
-            {error}
-          </motion.p>
-        )}
+        {error && <p className="text-red-400 text-xs text-center">{error}</p>}
       </motion.form>
 
-      {/* Direct Email */}
-      {process.env.NEXT_PUBLIC_CONTACT_EMAIL && (
-        <p className="mt-8 text-center text-sm text-white/50">
-          Or email me directly at{" "}
-          <a
-            href={`mailto:${process.env.NEXT_PUBLIC_CONTACT_EMAIL}`}
-            className="text-indigo-400 hover:text-indigo-300 transition"
-          >
-            {process.env.NEXT_PUBLIC_CONTACT_EMAIL}
-          </a>
-        </p>
-      )}
-
-      <p className="mt-3 text-center text-xs text-white/40">
-        I typically respond within 24–48 hours.
-      </p>
+      {/* Alternative Contact */}
+      <div className="mt-8 text-center text-sm text-[#6B7280]">
+        Or email me at{" "}
+        <a
+          href="mailto:yatishp777@gmail.com"
+          className="text-[#E5E7EB] hover:underline"
+        >
+          yatishp777@gmail.com
+        </a>
+      </div>
     </section>
   );
 }
