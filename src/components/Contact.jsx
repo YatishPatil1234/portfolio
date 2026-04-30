@@ -45,11 +45,11 @@ export default function Contact() {
   return (
     <section
       id="contact"
-      className="relative max-w-6xl mx-auto px-6 pt-28 pb-20 bg-[#050505]"
+      className="relative max-w-6xl mx-auto px-4 sm:px-6 pt-24 md:pt-28 pb-20 bg-[#050505] overflow-x-clip scroll-mt-28"
     >
       {/* Glow */}
       <div className="absolute inset-0 -z-10">
-        <div className="absolute bottom-1/3 left-1/2 -translate-x-1/2 w-[450px] h-[450px] bg-white/5 blur-3xl rounded-full opacity-40" />
+        <div className="absolute bottom-1/3 left-1/2 -translate-x-1/2 w-[320px] h-[320px] sm:w-[380px] sm:h-[380px] md:w-[450px] md:h-[450px] bg-white/5 blur-3xl rounded-full opacity-40" />
       </div>
 
       {/* Header */}
@@ -63,7 +63,7 @@ export default function Contact() {
           Contact
         </div>
 
-        <h2 className="text-3xl md:text-4xl font-semibold text-[#E5E7EB]">
+        <h2 className="text-2xl sm:text-3xl md:text-4xl font-semibold tracking-tight text-[#E5E7EB]">
           Let’s Work Together
         </h2>
 
@@ -79,10 +79,10 @@ export default function Contact() {
         whileInView={{ opacity: 1, y: 0 }}
         className="
           max-w-lg mx-auto
-          bg-[#0a0a0a]/80 backdrop-blur-xl
+          bg-[#0a0a0a]/85 backdrop-blur-sm
           border border-white/10
           rounded-xl
-          p-6
+          p-5 sm:p-6
           space-y-5
         "
       >
@@ -141,7 +141,7 @@ export default function Contact() {
           type="submit"
           disabled={loading}
           className="
-            w-full py-2.5
+            w-full min-h-11 py-2.5
             text-sm font-medium
             bg-white text-black
             rounded-md

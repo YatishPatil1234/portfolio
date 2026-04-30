@@ -4,9 +4,9 @@ import "./globals.css";
 export default function RootLayout({ children }) {
   return (
     <html lang="en" className="dark">
-      <body>
+      <body className="antialiased">
         <ClientNavbar />
-        {children}
+        <main>{children}</main>
       </body>
     </html>
   );

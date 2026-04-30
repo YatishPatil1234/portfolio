@@ -35,11 +35,11 @@ export default function Experience() {
   return (
     <section
       id="experience"
-      className="relative max-w-6xl mx-auto px-6 pt-24 md:pt-28 bg-[#050505]"
+      className="relative max-w-6xl mx-auto px-4 sm:px-6 pt-24 md:pt-28 bg-[#050505] overflow-x-clip scroll-mt-28"
     >
       {/* Glow */}
       <div className="absolute inset-0 -z-10">
-        <div className="absolute top-1/3 left-1/2 -translate-x-1/2 w-[450px] h-[450px] bg-white/5 blur-3xl rounded-full" />
+        <div className="absolute top-1/3 left-1/2 -translate-x-1/2 w-[320px] h-[320px] sm:w-[390px] sm:h-[390px] md:w-[450px] md:h-[450px] bg-white/5 blur-3xl rounded-full" />
       </div>
 
       {/* Header */}
@@ -49,7 +49,7 @@ export default function Experience() {
         viewport={{ once: true }}
         className="mb-14 text-center"
       >
-        <h2 className="text-2xl md:text-3xl font-semibold text-[#E5E7EB]">
+        <h2 className="text-2xl sm:text-3xl md:text-4xl font-semibold tracking-tight text-[#E5E7EB]">
           Experience
         </h2>
 
@@ -78,7 +78,7 @@ export default function Experience() {
             {/* Card */}
             <motion.div
               whileHover={{ y: -2 }}
-              className="bg-[#0a0a0a] border border-white/10 rounded-xl p-6 hover:border-white/20 transition"
+              className="bg-[#0a0a0a]/85 backdrop-blur-sm border border-white/10 rounded-xl p-5 sm:p-6 hover:border-white/20 transition"
             >
               {/* Top */}
               <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-2">
@@ -92,7 +92,7 @@ export default function Experience() {
                   </p>
                 </div>
 
-                <span className="text-xs text-[#6B7280]">{exp.period}</span>
+                <span className="text-xs text-[#6B7280] md:text-right">{exp.period}</span>
               </div>
 
               {/* Highlight */}

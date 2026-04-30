@@ -1,17 +1,19 @@
 "use client";
 
-import { Button } from "@/components/ui/button";
 import { motion } from "framer-motion";
 
 export default function Hero() {
   return (
-    <section className="relative min-h-screen flex items-center justify-center bg-[#050505] overflow-hidden">
+    <section
+      id="top"
+      className="relative min-h-svh flex items-center justify-center bg-[#050505] overflow-x-clip overflow-y-hidden pt-24 sm:pt-28 pb-12"
+    >
       {/* Glow */}
       <div className="absolute inset-0 -z-10">
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[900px] h-[900px] bg-white/5 blur-3xl rounded-full opacity-60" />
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[520px] h-[520px] sm:w-[700px] sm:h-[700px] md:w-[900px] md:h-[900px] bg-white/5 blur-3xl rounded-full opacity-60" />
       </div>
 
-      <div className="max-w-4xl mx-auto px-6 text-center">
+      <div className="max-w-4xl mx-auto px-4 sm:px-6 text-center">
         <motion.div
           initial="hidden"
           animate="visible"
@@ -19,7 +21,7 @@ export default function Hero() {
             hidden: {},
             visible: { transition: { staggerChildren: 0.1 } },
           }}
-          className="space-y-8"
+          className="space-y-7 sm:space-y-8"
         >
           {/* Badge */}
           <motion.p
@@ -36,7 +38,7 @@ export default function Hero() {
               hidden: { opacity: 0, y: 20 },
               visible: { opacity: 1, y: 0 },
             }}
-            className="text-4xl sm:text-5xl md:text-6xl font-semibold leading-[1.15] text-[#E5E7EB] max-w-3xl mx-auto"
+            className="text-3xl sm:text-5xl md:text-6xl font-semibold tracking-tight leading-[1.1] text-[#E5E7EB] max-w-3xl mx-auto"
           >
             I build <span className="text-white">modern web</span>
             <br />
@@ -46,7 +48,7 @@ export default function Hero() {
           {/* Supporting */}
           <motion.p
             variants={{ hidden: { opacity: 0 }, visible: { opacity: 1 } }}
-            className="text-base md:text-lg text-[#9CA3AF] max-w-xl mx-auto leading-relaxed"
+            className="text-sm sm:text-base md:text-lg text-[#9CA3AF] max-w-xl mx-auto leading-relaxed"
           >
             Focused on performance, clean UI, and real-world production systems
           </motion.p>
@@ -68,28 +70,23 @@ export default function Hero() {
           {/* CTA */}
           <motion.div
             variants={{ hidden: { opacity: 0 }, visible: { opacity: 1 } }}
-            className="flex justify-center gap-4 pt-2 flex-wrap"
+            className="flex justify-center gap-3 sm:gap-4 pt-2 flex-wrap"
           >
-            <Button
-              className="px-7 py-3 bg-white text-black text-sm font-medium hover:bg-white/90 transition shadow-lg hover:shadow-white/10 cursor-pointer"
-              asChild
+            <a
+              href="#projects"
+              className="inline-flex items-center justify-center min-h-11 px-7 py-3 rounded-md bg-white !text-[#050505] text-sm font-semibold hover:bg-white/90 transition shadow-lg hover:shadow-white/10"
             >
-              <a href="#projects">View Projects</a>
-            </Button>
+              View Projects
+            </a>
 
-            <Button
-              variant="outline"
-              className="px-7 py-3 text-[#E5E7EB] border border-white/10 hover:bg-white/5 text-sm transition cursor-pointer"
-              asChild
+            <a
+              href="/resume/Yatish_Patil_Frontend_Developer.pdf"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center justify-center min-h-11 px-7 py-3 rounded-md text-[#E5E7EB] border border-white/10 hover:bg-white/5 text-sm font-medium transition"
             >
-              <a
-                href="/resume/Yatish_Patil_Frontend_Developer.pdf"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                Resume
-              </a>
-            </Button>
+              Resume
+            </a>
           </motion.div>
         </motion.div>
       </div>

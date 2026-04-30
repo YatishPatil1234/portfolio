@@ -8,17 +8,17 @@ export default function Footer() {
       initial={{ opacity: 0, y: 16 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
-      className="relative mt-24 bg-[#050505]"
+      className="relative mt-16 sm:mt-20 bg-[#050505] overflow-x-clip"
     >
       {/* 🔥 Top Glow Line (better than plain divider) */}
       <div className="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-white/20 to-transparent" />
 
       {/* Subtle Glow */}
       <div className="absolute inset-0 -z-10">
-        <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[500px] h-[250px] bg-white/5 blur-3xl rounded-full opacity-40" />
+        <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[360px] h-[180px] sm:w-[420px] sm:h-[220px] md:w-[500px] md:h-[250px] bg-white/5 blur-3xl rounded-full opacity-40" />
       </div>
 
-      <div className="max-w-6xl mx-auto px-6 py-12 flex flex-col md:flex-row items-center justify-between gap-8">
+      <div className="max-w-6xl mx-auto px-4 sm:px-6 py-10 sm:py-12 flex flex-col md:flex-row items-center justify-between gap-7">
         {/* LEFT */}
         <div className="text-center md:text-left space-y-2">
           <p className="text-sm text-[#E5E7EB]">

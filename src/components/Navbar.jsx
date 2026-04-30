@@ -37,22 +37,40 @@ export default function Navbar() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
+  useEffect(() => {
+    document.body.style.overflow = open ? "hidden" : "";
+    return () => {
+      document.body.style.overflow = "";
+    };
+  }, [open]);
+
+  useEffect(() => {
+    const handleEscape = (event) => {
+      if (event.key === "Escape") {
+        setOpen(false);
+      }
+    };
+
+    window.addEventListener("keydown", handleEscape);
+    return () => window.removeEventListener("keydown", handleEscape);
+  }, []);
+
   return (
     <>
       {/* NAVBAR */}
       <motion.nav
         initial={{ y: -20, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
-        className="fixed top-4 left-0 w-full z-50 flex justify-center"
+        className="fixed top-3 sm:top-4 left-0 w-full z-50 flex justify-center"
       >
         <div
           className="
             w-[92%] max-w-6xl h-14
             flex items-center justify-between px-5
-            rounded-xl
-            bg-[#0a0a0a]/80 backdrop-blur-xl
+            rounded-2xl
+            bg-[#0a0a0a]/85 backdrop-blur-xl
             border border-white/10
-            shadow-lg shadow-black/40
+            shadow-[0_10px_30px_rgba(0,0,0,0.45)]
           "
         >
           {/* LOGO */}
@@ -72,7 +90,7 @@ export default function Navbar() {
                 <a
                   key={item.name}
                   href={`#${item.href}`}
-                  className="relative px-3 py-1 text-sm group"
+                  className="relative px-3 py-1.5 text-sm rounded-md group"
                 >
                   {/* Active background */}
                   {isActive && (
@@ -102,7 +120,7 @@ export default function Navbar() {
                   </span>
 
                   {/* Hover underline */}
-                  <span className="absolute left-0 bottom-0 w-0 h-[1px] bg-white/30 group-hover:w-full transition-all duration-300" />
+                  <span className="absolute left-2 right-2 bottom-0 h-[1px] scale-x-0 bg-white/30 group-hover:scale-x-100 transition-transform duration-300" />
                 </a>
               );
             })}
@@ -111,8 +129,9 @@ export default function Navbar() {
           {/* MOBILE BUTTON */}
           <button
             onClick={() => setOpen(true)}
+            aria-label="Open menu"
             className="
-              md:hidden p-2 rounded-md
+              md:hidden min-h-11 min-w-11 p-2 rounded-md
               border border-white/10
               hover:bg-white/5
               transition
@@ -146,7 +165,7 @@ export default function Navbar() {
               animate={{ x: 0 }}
               exit={{ x: "100%" }}
               className="
-                fixed top-0 right-0 h-full w-[75%] max-w-sm
+                fixed top-0 right-0 h-full w-[82vw] max-w-[320px] overflow-y-auto
                 bg-[#050505]
                 border-l border-white/10
                 z-50 p-6
@@ -156,6 +175,7 @@ export default function Navbar() {
               {/* CLOSE BUTTON */}
               <button
                 onClick={() => setOpen(false)}
+                aria-label="Close menu"
                 className="absolute top-5 right-5 text-white/60 hover:text-white transition"
               >
                 ✕

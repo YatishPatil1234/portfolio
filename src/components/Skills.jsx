@@ -41,11 +41,11 @@ export default function Skills() {
   return (
     <section
       id="skills"
-      className="relative max-w-6xl mx-auto px-6 pt-28 pb-16 bg-[#050505]"
+      className="relative max-w-6xl mx-auto px-4 sm:px-6 pt-24 md:pt-28 pb-16 bg-[#050505] overflow-x-clip scroll-mt-28"
     >
       {/* Glow */}
       <div className="absolute inset-0 -z-10">
-        <div className="absolute bottom-1/3 left-1/2 -translate-x-1/2 w-[450px] h-[450px] bg-white/5 blur-3xl rounded-full opacity-40" />
+        <div className="absolute bottom-1/3 left-1/2 -translate-x-1/2 w-[320px] h-[320px] sm:w-[390px] sm:h-[390px] md:w-[450px] md:h-[450px] bg-white/5 blur-3xl rounded-full opacity-40" />
       </div>
 
       {/* Header */}
@@ -60,7 +60,7 @@ export default function Skills() {
           Skills
         </div>
 
-        <h2 className="text-3xl md:text-4xl font-semibold text-[#E5E7EB]">
+        <h2 className="text-2xl sm:text-3xl md:text-4xl font-semibold tracking-tight text-[#E5E7EB]">
           Skills & Technologies
         </h2>
 
@@ -70,7 +70,7 @@ export default function Skills() {
       </motion.div>
 
       {/* Grid */}
-      <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+      <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5 sm:gap-6">
         {skillGroups.map((group, index) => (
           <motion.div
             key={group.title}
@@ -81,7 +81,7 @@ export default function Skills() {
             whileHover={{ y: -3 }}
             className="
               rounded-xl p-5
-              bg-[#0a0a0a]/80 backdrop-blur-xl
+              bg-[#0a0a0a]/85 backdrop-blur-sm
               border border-white/10
               hover:border-white/20
               transition

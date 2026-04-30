@@ -6,14 +6,14 @@ export default function About() {
   return (
     <section
       id="about"
-      className="relative max-w-6xl mx-auto px-6 pt-24 md:pt-28 bg-[#050505]"
+      className="relative max-w-6xl mx-auto px-4 sm:px-6 pt-24 md:pt-28 bg-[#050505] overflow-x-clip scroll-mt-28"
     >
       {/* Glow */}
       <div className="absolute inset-0 -z-10">
         <div className="absolute top-1/3 right-1/4 w-[400px] h-[400px] bg-white/5 blur-3xl rounded-full" />
       </div>
 
-      <div className="grid md:grid-cols-2 gap-14 items-start">
+      <div className="grid md:grid-cols-2 gap-10 md:gap-14 items-start">
         {/* LEFT */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -27,7 +27,7 @@ export default function About() {
           </div>
 
           {/* Heading */}
-          <h2 className="text-3xl md:text-4xl font-semibold text-[#E5E7EB] leading-snug max-w-xl">
+          <h2 className="text-2xl sm:text-3xl md:text-4xl font-semibold tracking-tight text-[#E5E7EB] leading-snug max-w-xl">
             I build <span className="text-white">scalable and reliable</span>{" "}
             web applications
           </h2>
@@ -93,15 +93,15 @@ export default function About() {
 function InfoCard({ label, value }) {
   return (
     <motion.div
-      whileHover={{ x: 4 }}
+      whileHover={{ y: -2 }}
       className="
         flex items-center justify-between
         px-5 py-4
-        rounded-lg
-        bg-[#0a0a0a]
+        rounded-xl
+        bg-[#0a0a0a]/85 backdrop-blur-sm
         border border-white/10
         hover:border-white/20
-        transition
+        transition-all
       "
     >
       <span className="text-sm text-[#6B7280]">{label}</span>

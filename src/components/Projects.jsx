@@ -40,11 +40,11 @@ export default function Projects() {
   return (
     <section
       id="projects"
-      className="relative max-w-6xl mx-auto px-6 pt-28 pb-16 bg-[#050505]"
+      className="relative max-w-6xl mx-auto px-4 sm:px-6 pt-24 md:pt-28 pb-16 bg-[#050505] overflow-x-clip scroll-mt-28"
     >
       {/* Glow */}
       <div className="absolute inset-0 -z-10">
-        <div className="absolute top-1/3 left-1/2 -translate-x-1/2 w-[600px] h-[600px] bg-white/5 blur-3xl rounded-full opacity-40" />
+        <div className="absolute top-1/3 left-1/2 -translate-x-1/2 w-[380px] h-[380px] sm:w-[500px] sm:h-[500px] md:w-[600px] md:h-[600px] bg-white/5 blur-3xl rounded-full opacity-40" />
       </div>
 
       {/* Header */}
@@ -58,7 +58,7 @@ export default function Projects() {
           Projects
         </div>
 
-        <h2 className="text-3xl md:text-4xl font-semibold text-[#E5E7EB]">
+        <h2 className="text-2xl sm:text-3xl md:text-4xl font-semibold tracking-tight text-[#E5E7EB]">
           Featured Work
         </h2>
 
@@ -68,7 +68,7 @@ export default function Projects() {
       </motion.div>
 
       {/* Grid */}
-      <div className="grid md:grid-cols-2 gap-8">
+      <div className="grid md:grid-cols-2 gap-6 sm:gap-8">
         {projects.map((project, index) => (
           <motion.div
             key={project.title}
@@ -79,7 +79,7 @@ export default function Projects() {
             whileHover={{ y: -6 }}
             className="
               group rounded-xl overflow-hidden
-              bg-[#0a0a0a]/80 backdrop-blur-xl
+              bg-[#0a0a0a]/85 backdrop-blur-sm
               border border-white/10
               hover:border-white/20
               transition-all duration-300
@@ -105,7 +105,7 @@ export default function Projects() {
             </div>
 
             {/* CONTENT */}
-            <div className="p-6 space-y-4">
+            <div className="p-5 sm:p-6 space-y-4">
               <h3 className="text-lg font-semibold text-[#E5E7EB]">
                 {project.title}
               </h3>
@@ -144,10 +144,10 @@ export default function Projects() {
                     rel="noopener noreferrer"
                     className="
                       flex items-center gap-2
-                      px-4 py-2
-                      text-xs font-medium
+                      min-h-10 px-4 py-2
+                      text-xs font-semibold
                       rounded-md
-                      bg-white text-black
+                      bg-white !text-[#050505]
                       hover:bg-white/90
                       active:scale-[0.97]
                       transition
@@ -155,6 +155,7 @@ export default function Projects() {
                   >
                     {/* 🔥 Better Live Icon */}
                     <svg
+                      className="text-[#050505]"
                       width="14"
                       height="14"
                       viewBox="0 0 24 24"
@@ -178,7 +179,7 @@ export default function Projects() {
                     rel="noopener noreferrer"
                     className="
                       flex items-center gap-2
-                      px-4 py-2
+                      min-h-10 px-4 py-2
                       text-xs font-medium
                       rounded-md
                       border border-white/10
