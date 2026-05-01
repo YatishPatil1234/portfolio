@@ -40,7 +40,7 @@ export default function Projects() {
   return (
     <section
       id="projects"
-      className="relative max-w-6xl mx-auto px-4 sm:px-6 pt-24 md:pt-28 pb-16 bg-[#050505] overflow-x-clip scroll-mt-28"
+      className="relative max-w-6xl mx-auto px-4 sm:px-6 pt-16 sm:pt-20 md:pt-20 pb-8 sm:pb-12 md:pb-12 bg-[#050505] overflow-x-clip scroll-mt-28"
     >
       {/* Glow */}
       <div className="absolute inset-0 -z-10">
@@ -54,11 +54,11 @@ export default function Projects() {
         viewport={{ once: true }}
         className="mb-16 text-center"
       >
-        <div className="inline-flex px-3 py-1 text-xs text-[#9CA3AF] border border-white/10 bg-white/5 rounded-full mb-4">
+        <div className="inline-flex px-3 py-1 text-xs text-[#9CA3AF] border border-[var(--border)] bg-white/5 rounded-full mb-4">
           Projects
         </div>
 
-        <h2 className="text-2xl sm:text-3xl md:text-4xl font-semibold tracking-tight text-[#E5E7EB]">
+        <h2 className="text-3xl sm:text-4xl md:text-4xl font-bold tracking-tight text-[#E5E7EB]">
           Featured Work
         </h2>
 
@@ -68,7 +68,7 @@ export default function Projects() {
       </motion.div>
 
       {/* Grid */}
-      <div className="grid md:grid-cols-2 gap-6 sm:gap-8">
+      <div className="grid md:grid-cols-2 gap-4 sm:gap-6 md:gap-8">
         {projects.map((project, index) => (
           <motion.div
             key={project.title}
@@ -80,8 +80,8 @@ export default function Projects() {
             className="
               group rounded-xl overflow-hidden
               bg-[#0a0a0a]/85 backdrop-blur-sm
-              border border-white/10
-              hover:border-white/20
+              border border-[var(--border)]
+              hover:border-[var(--border-strong)]
               transition-all duration-300
             "
           >

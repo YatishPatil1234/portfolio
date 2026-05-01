@@ -10,8 +10,14 @@ export default function Footer() {
       viewport={{ once: true }}
       className="relative mt-16 sm:mt-20 bg-[#050505] overflow-x-clip"
     >
-      {/* 🔥 Top Glow Line (better than plain divider) */}
-      <div className="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-white/20 to-transparent" />
+      {/* Top Border Line */}
+      <div
+        className="absolute top-0 left-0 w-full h-px"
+        style={{
+          background:
+            "linear-gradient(to right, transparent, var(--border), transparent)",
+        }}
+      />
 
       {/* Subtle Glow */}
       <div className="absolute inset-0 -z-10">
@@ -92,12 +98,13 @@ function FooterIconLink({ href, label, icon }) {
         flex items-center justify-center
         w-10 h-10
         rounded-lg
-        border border-white/10
+        border border-[var(--border)]
         text-[#9CA3AF]
         hover:text-[#E5E7EB]
-        hover:border-white/30
+        hover:border-[var(--border-strong)]
         hover:-translate-y-[3px]
-        hover:bg-white/5
+        hover:bg-[var(--accent)]/10
+        transition-all duration-300
         transition-all duration-200
       "
       aria-label={label}

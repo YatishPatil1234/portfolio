@@ -35,7 +35,7 @@ export default function Experience() {
   return (
     <section
       id="experience"
-      className="relative max-w-6xl mx-auto px-4 sm:px-6 pt-24 md:pt-28 bg-[#050505] overflow-x-clip scroll-mt-28"
+      className="relative max-w-6xl mx-auto px-4 sm:px-6 pt-16 sm:pt-20 md:pt-20 pb-8 sm:pb-12 bg-[#050505] overflow-x-clip scroll-mt-28"
     >
       {/* Glow */}
       <div className="absolute inset-0 -z-10">
@@ -49,7 +49,7 @@ export default function Experience() {
         viewport={{ once: true }}
         className="mb-14 text-center"
       >
-        <h2 className="text-2xl sm:text-3xl md:text-4xl font-semibold tracking-tight text-[#E5E7EB]">
+        <h2 className="text-3xl sm:text-4xl md:text-4xl font-bold tracking-tight text-[#E5E7EB]">
           Experience
         </h2>
 
@@ -61,7 +61,10 @@ export default function Experience() {
       {/* Timeline */}
       <div className="relative ml-2">
         {/* Line */}
-        <div className="absolute left-0 top-0 h-full w-[1px] bg-white/10" />
+        <div
+          className="absolute left-0 top-0 h-full w-[1px]"
+          style={{ background: "var(--border)" }}
+        />
 
         {experiences.map((exp, index) => (
           <motion.div
@@ -73,12 +76,15 @@ export default function Experience() {
             className="relative pl-6 pb-12"
           >
             {/* Dot */}
-            <span className="absolute -left-[5px] top-2 w-2.5 h-2.5 rounded-full bg-white/40" />
+            <span
+              className="absolute -left-[5px] top-2 w-2.5 h-2.5 rounded-full"
+              style={{ background: "var(--accent)" }}
+            />
 
             {/* Card */}
             <motion.div
-              whileHover={{ y: -2 }}
-              className="bg-[#0a0a0a]/85 backdrop-blur-sm border border-white/10 rounded-xl p-5 sm:p-6 hover:border-white/20 transition"
+              whileHover={{ y: -4 }}
+              className="bg-[#0a0a0a]/85 backdrop-blur-sm border border-[var(--border)] rounded-xl p-5 sm:p-6 hover:border-[var(--border-strong)] transition-all duration-300"
             >
               {/* Top */}
               <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-2">
@@ -92,7 +98,9 @@ export default function Experience() {
                   </p>
                 </div>
 
-                <span className="text-xs text-[#6B7280] md:text-right">{exp.period}</span>
+                <span className="text-xs text-[#6B7280] md:text-right">
+                  {exp.period}
+                </span>
               </div>
 
               {/* Highlight */}

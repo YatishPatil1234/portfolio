@@ -6,28 +6,28 @@ export default function About() {
   return (
     <section
       id="about"
-      className="relative max-w-6xl mx-auto px-4 sm:px-6 pt-24 md:pt-28 bg-[#050505] overflow-x-clip scroll-mt-28"
+      className="relative max-w-6xl mx-auto px-4 sm:px-6 pt-16 sm:pt-20 md:pt-20 pb-8 sm:pb-12 bg-[#050505] overflow-x-clip scroll-mt-28"
     >
       {/* Glow */}
       <div className="absolute inset-0 -z-10">
         <div className="absolute top-1/3 right-1/4 w-[400px] h-[400px] bg-white/5 blur-3xl rounded-full" />
       </div>
 
-      <div className="grid md:grid-cols-2 gap-10 md:gap-14 items-start">
+      <div className="grid md:grid-cols-2 gap-6 sm:gap-8 md:gap-14 items-start">
         {/* LEFT */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="space-y-6"
+          className="space-y-6 md:space-y-7"
         >
           {/* Badge */}
-          <div className="inline-flex px-3 py-1 text-xs text-[#9CA3AF] border border-white/10 bg-white/5 rounded-full">
+          <div className="inline-flex px-3 py-1 text-xs text-[#9CA3AF] border border-[var(--border)] bg-white/5 rounded-full">
             About Me
           </div>
 
           {/* Heading */}
-          <h2 className="text-2xl sm:text-3xl md:text-4xl font-semibold tracking-tight text-[#E5E7EB] leading-snug max-w-xl">
+          <h2 className="text-3xl sm:text-4xl md:text-4xl font-bold tracking-tight text-[#E5E7EB] leading-snug max-w-xl">
             I build <span className="text-white">scalable and reliable</span>{" "}
             web applications
           </h2>
@@ -46,7 +46,7 @@ export default function About() {
             <p>
               With{" "}
               <span className="text-[#E5E7EB] font-medium">
-                1.7+ years of experience
+                1.8+ years of experience
               </span>
               , I work at{" "}
               <span className="text-[#E5E7EB] font-medium">
@@ -79,7 +79,7 @@ export default function About() {
           transition={{ delay: 0.1 }}
           className="space-y-4"
         >
-          <InfoCard label="Experience" value="1.7+ Years" />
+          <InfoCard label="Experience" value="1.8+ Years" />
           <InfoCard label="Work" value="Production Applications" />
           <InfoCard label="SEO Achievement" value="Lighthouse Score 100" />
           <InfoCard label="Focus" value="UI, Performance, APIs" />
@@ -93,19 +93,24 @@ export default function About() {
 function InfoCard({ label, value }) {
   return (
     <motion.div
-      whileHover={{ y: -2 }}
-      className="
-        flex items-center justify-between
-        px-5 py-4
-        rounded-xl
-        bg-[#0a0a0a]/85 backdrop-blur-sm
-        border border-white/10
-        hover:border-white/20
-        transition-all
-      "
+      whileHover={{ y: -4 }}
+      className="modern-card"
+      style={{ padding: "1.25rem", cursor: "pointer" }}
     >
-      <span className="text-sm text-[#6B7280]">{label}</span>
-      <span className="text-sm text-[#E5E7EB] font-medium">{value}</span>
+      <div className="flex items-center justify-between">
+        <span
+          className="text-sm font-medium"
+          style={{ color: "var(--text-muted)" }}
+        >
+          {label}
+        </span>
+        <span
+          className="text-base font-semibold"
+          style={{ color: "var(--text-primary)" }}
+        >
+          {value}
+        </span>
+      </div>
     </motion.div>
   );
 }

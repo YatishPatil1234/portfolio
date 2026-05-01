@@ -41,7 +41,7 @@ export default function Skills() {
   return (
     <section
       id="skills"
-      className="relative max-w-6xl mx-auto px-4 sm:px-6 pt-24 md:pt-28 pb-16 bg-[#050505] overflow-x-clip scroll-mt-28"
+      className="relative max-w-6xl mx-auto px-4 sm:px-6 pt-16 sm:pt-20 md:pt-20 pb-8 sm:pb-12 md:pb-12 bg-[#050505] overflow-x-clip scroll-mt-28"
     >
       {/* Glow */}
       <div className="absolute inset-0 -z-10">
@@ -56,11 +56,11 @@ export default function Skills() {
         className="mb-16 text-center"
       >
         {/* Badge */}
-        <div className="inline-flex px-3 py-1 text-xs text-[#9CA3AF] border border-white/10 bg-white/5 rounded-full mb-4">
+        <div className="inline-flex px-3 py-1 text-xs text-[#9CA3AF] border border-[var(--border)] bg-white/5 rounded-full mb-4">
           Skills
         </div>
 
-        <h2 className="text-2xl sm:text-3xl md:text-4xl font-semibold tracking-tight text-[#E5E7EB]">
+        <h2 className="text-3xl sm:text-4xl md:text-4xl font-bold tracking-tight text-[#E5E7EB]">
           Skills & Technologies
         </h2>
 
@@ -70,7 +70,7 @@ export default function Skills() {
       </motion.div>
 
       {/* Grid */}
-      <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5 sm:gap-6">
+      <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
         {skillGroups.map((group, index) => (
           <motion.div
             key={group.title}
@@ -82,9 +82,10 @@ export default function Skills() {
             className="
               rounded-xl p-5
               bg-[#0a0a0a]/85 backdrop-blur-sm
-              border border-white/10
-              hover:border-white/20
-              transition
+              border border-[var(--border)]
+              hover:border-[var(--border-strong)]
+              transition-all duration-300
+              cursor-pointer
             "
           >
             {/* Title */}

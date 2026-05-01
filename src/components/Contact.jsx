@@ -45,7 +45,7 @@ export default function Contact() {
   return (
     <section
       id="contact"
-      className="relative max-w-6xl mx-auto px-4 sm:px-6 pt-24 md:pt-28 pb-20 bg-[#050505] overflow-x-clip scroll-mt-28"
+      className="relative max-w-6xl mx-auto px-4 sm:px-6 pt-16 sm:pt-20 md:pt-20 pb-8 sm:pb-12 md:pb-12 bg-[#050505] overflow-x-clip scroll-mt-28"
     >
       {/* Glow */}
       <div className="absolute inset-0 -z-10">
@@ -59,11 +59,11 @@ export default function Contact() {
         className="mb-14 text-center"
       >
         {/* Badge */}
-        <div className="inline-flex px-3 py-1 text-xs text-[#9CA3AF] border border-white/10 bg-white/5 rounded-full mb-4">
+        <div className="inline-flex px-3 py-1 text-xs text-[#9CA3AF] border border-[var(--border)] bg-white/5 rounded-full mb-4">
           Contact
         </div>
 
-        <h2 className="text-2xl sm:text-3xl md:text-4xl font-semibold tracking-tight text-[#E5E7EB]">
+        <h2 className="text-3xl sm:text-4xl md:text-4xl font-bold tracking-tight text-[#E5E7EB]">
           Let’s Work Together
         </h2>
 
@@ -80,7 +80,7 @@ export default function Contact() {
         className="
           max-w-lg mx-auto
           bg-[#0a0a0a]/85 backdrop-blur-sm
-          border border-white/10
+          border border-[var(--border)]
           rounded-xl
           p-5 sm:p-6
           space-y-5
@@ -97,17 +97,17 @@ export default function Contact() {
             onChange={handleChange}
             required
             className="
-              w-full px-4 py-2.5
-              text-sm
+              w-full px-4 py-3
+              text-base sm:text-sm
               bg-[#050505]
-              border border-white/10
+              border border-[var(--border)]
               rounded-md
               text-[#E5E7EB]
               placeholder:text-[#6B7280]
               focus:outline-none
-              focus:border-white/30
-              focus:ring-1 focus:ring-white/20
-              transition
+              focus:border-[var(--border-strong)]
+              focus:ring-2 focus:ring-white/10
+              transition-all
             "
           />
         ))}
@@ -116,22 +116,22 @@ export default function Contact() {
         <textarea
           name="message"
           rows={4}
-          placeholder="Tell me about your project..."
+          placeholder="Your Message"
           value={form.message}
           onChange={handleChange}
           required
           className="
-            w-full px-4 py-2.5
-            text-sm
+            w-full px-4 py-3
+            text-base sm:text-sm
             bg-[#050505]
-            border border-white/10
+            border border-[var(--border)]
             rounded-md
             text-[#E5E7EB]
             placeholder:text-[#6B7280]
             focus:outline-none
-            focus:border-white/30
-            focus:ring-1 focus:ring-white/20
-            transition
+            focus:border-[var(--border-strong)]
+            focus:ring-2 focus:ring-white/10
+            transition-all
             resize-none
           "
         />
@@ -141,13 +141,8 @@ export default function Contact() {
           type="submit"
           disabled={loading}
           className="
-            w-full min-h-11 py-2.5
-            text-sm font-medium
-            bg-white text-black
-            rounded-md
-            hover:bg-white/90
-            transition
-            cursor-pointer
+            modern-btn
+            w-full
             active:scale-[0.98]
             disabled:opacity-50
             disabled:cursor-not-allowed
