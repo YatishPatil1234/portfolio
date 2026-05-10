@@ -33,13 +33,10 @@ const experiences = [
 
 export default function Experience() {
   return (
-    <section
-      id="experience"
-      className="relative max-w-6xl mx-auto px-4 sm:px-6 pt-16 sm:pt-20 md:pt-20 pb-8 sm:pb-12 bg-[#050505] overflow-x-clip scroll-mt-28"
-    >
+    <section id="experience" className="section-shell bg-[#050505]">
       {/* Glow */}
       <div className="absolute inset-0 -z-10">
-        <div className="absolute top-1/3 left-1/2 -translate-x-1/2 w-[320px] h-[320px] sm:w-[390px] sm:h-[390px] md:w-[450px] md:h-[450px] bg-white/5 blur-3xl rounded-full" />
+        <div className="absolute top-1/3 left-1/2 -translate-x-1/2 w-80 h-80 sm:w-97.5 sm:h-97.5 md:w-112.5 md:h-112.5 bg-white/5 blur-3xl rounded-full" />
       </div>
 
       {/* Header */}
@@ -49,11 +46,11 @@ export default function Experience() {
         viewport={{ once: true }}
         className="mb-14 text-center"
       >
-        <h2 className="text-3xl sm:text-4xl md:text-4xl font-bold tracking-tight text-[#E5E7EB]">
+        <h2 className="section-title text-4xl sm:text-5xl md:text-5xl">
           Experience
         </h2>
 
-        <p className="mt-2 text-[#9CA3AF] text-sm md:text-base max-w-xl mx-auto">
+        <p className="section-copy mt-2 text-sm md:text-base max-w-xl mx-auto">
           Real-world experience building scalable production applications.
         </p>
       </motion.div>
@@ -62,7 +59,7 @@ export default function Experience() {
       <div className="relative ml-2">
         {/* Line */}
         <div
-          className="absolute left-0 top-0 h-full w-[1px]"
+          className="absolute left-0 top-0 h-full w-px"
           style={{ background: "var(--border)" }}
         />
 
@@ -77,14 +74,14 @@ export default function Experience() {
           >
             {/* Dot */}
             <span
-              className="absolute -left-[5px] top-2 w-2.5 h-2.5 rounded-full"
+              className="absolute -left-1.25 top-2 w-2.5 h-2.5 rounded-full"
               style={{ background: "var(--accent)" }}
             />
 
             {/* Card */}
             <motion.div
               whileHover={{ y: -4 }}
-              className="bg-[#0a0a0a]/85 backdrop-blur-sm border border-[var(--border)] rounded-xl p-5 sm:p-6 hover:border-[var(--border-strong)] transition-all duration-300"
+              className="surface-card p-5 sm:p-6"
             >
               {/* Top */}
               <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-2">
@@ -104,9 +101,7 @@ export default function Experience() {
               </div>
 
               {/* Highlight */}
-              <div className="mt-4 inline-flex px-3 py-1.5 text-xs rounded-full bg-[#0f0f0f] border border-white/10 text-[#E5E7EB]">
-                {exp.highlight}
-              </div>
+              <div className="mt-4 surface-chip text-xs">{exp.highlight}</div>
 
               {/* Points */}
               <ul className="mt-4 space-y-2">
@@ -115,9 +110,7 @@ export default function Experience() {
                     key={i}
                     className="text-sm text-[#9CA3AF] leading-relaxed flex gap-2"
                   >
-                    <span className="text-white/30 mt-[6px] text-[10px]">
-                      •
-                    </span>
+                    <span className="text-white/30 mt-1.5 text-[10px]">•</span>
                     <span>{point}</span>
                   </li>
                 ))}
@@ -136,7 +129,7 @@ export default function Experience() {
                       border border-white/10
                       text-[#E5E7EB]
                       hover:border-white/20
-                      hover:-translate-y-[1px]
+                      hover:-translate-y-px
                       transition
                     "
                   >

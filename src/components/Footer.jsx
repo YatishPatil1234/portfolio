@@ -21,7 +21,7 @@ export default function Footer() {
 
       {/* Subtle Glow */}
       <div className="absolute inset-0 -z-10">
-        <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[360px] h-[180px] sm:w-[420px] sm:h-[220px] md:w-[500px] md:h-[250px] bg-white/5 blur-3xl rounded-full opacity-40" />
+        <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-90 h-45 sm:w-105 sm:h-55 md:w-125 md:h-62.5 bg-white/5 blur-3xl rounded-full opacity-40" />
       </div>
 
       <div className="max-w-6xl mx-auto px-4 sm:px-6 py-10 sm:py-12 flex flex-col md:flex-row items-center justify-between gap-7">
@@ -98,13 +98,12 @@ function FooterIconLink({ href, label, icon }) {
         flex items-center justify-center
         w-10 h-10
         rounded-lg
-        border border-[var(--border)]
+        border border-(--border)
         text-[#9CA3AF]
         hover:text-[#E5E7EB]
-        hover:border-[var(--border-strong)]
-        hover:-translate-y-[3px]
-        hover:bg-[var(--accent)]/10
-        transition-all duration-300
+        hover:border-(--border-strong)
+        hover:-translate-y-0.75
+        hover:bg-white/5
         transition-all duration-200
       "
       aria-label={label}

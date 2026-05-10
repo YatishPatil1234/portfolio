@@ -38,13 +38,10 @@ const projects = [
 
 export default function Projects() {
   return (
-    <section
-      id="projects"
-      className="relative max-w-6xl mx-auto px-4 sm:px-6 pt-16 sm:pt-20 md:pt-20 pb-8 sm:pb-12 md:pb-12 bg-[#050505] overflow-x-clip scroll-mt-28"
-    >
+    <section id="projects" className="section-shell bg-[#050505]">
       {/* Glow */}
       <div className="absolute inset-0 -z-10">
-        <div className="absolute top-1/3 left-1/2 -translate-x-1/2 w-[380px] h-[380px] sm:w-[500px] sm:h-[500px] md:w-[600px] md:h-[600px] bg-white/5 blur-3xl rounded-full opacity-40" />
+        <div className="absolute top-1/3 left-1/2 -translate-x-1/2 w-95 h-95 sm:w-125 sm:h-125 md:w-150 md:h-150 bg-white/5 blur-3xl rounded-full opacity-40" />
       </div>
 
       {/* Header */}
@@ -54,15 +51,13 @@ export default function Projects() {
         viewport={{ once: true }}
         className="mb-16 text-center"
       >
-        <div className="inline-flex px-3 py-1 text-xs text-[#9CA3AF] border border-[var(--border)] bg-white/5 rounded-full mb-4">
-          Projects
-        </div>
+        <div className="section-kicker mb-4">Projects</div>
 
-        <h2 className="text-3xl sm:text-4xl md:text-4xl font-bold tracking-tight text-[#E5E7EB]">
+        <h2 className="section-title text-4xl sm:text-5xl md:text-5xl">
           Featured Work
         </h2>
 
-        <p className="mt-3 text-[#9CA3AF] max-w-xl mx-auto text-sm md:text-base">
+        <p className="section-copy mt-3 max-w-xl mx-auto text-sm md:text-base">
           Real-world applications focused on performance and usability
         </p>
       </motion.div>
@@ -77,13 +72,7 @@ export default function Projects() {
             viewport={{ once: true }}
             transition={{ delay: index * 0.08 }}
             whileHover={{ y: -6 }}
-            className="
-              group rounded-xl overflow-hidden
-              bg-[#0a0a0a]/85 backdrop-blur-sm
-              border border-[var(--border)]
-              hover:border-[var(--border-strong)]
-              transition-all duration-300
-            "
+            className="group rounded-xl overflow-hidden surface-card"
           >
             {/* IMAGE */}
             <div className="relative aspect-video overflow-hidden border-b border-white/10 bg-black">
@@ -95,7 +84,7 @@ export default function Projects() {
                     fill
                     className="object-contain object-top transition-transform duration-500 group-hover:scale-105"
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent" />
+                  <div className="absolute inset-0 bg-linear-to-t from-black/60 via-black/20 to-transparent" />
                 </>
               ) : (
                 <div className="flex items-center justify-center h-full text-[#6B7280] text-sm">
@@ -110,26 +99,14 @@ export default function Projects() {
                 {project.title}
               </h3>
 
-              <p className="text-[#9CA3AF] text-sm leading-relaxed">
+              <p className="section-copy text-sm leading-relaxed">
                 {project.description}
               </p>
 
               {/* TECH */}
               <div className="flex flex-wrap gap-2">
                 {project.tech.map((tech) => (
-                  <span
-                    key={tech}
-                    className="
-                      px-3 py-1.5
-                      text-xs
-                      rounded-md
-                      bg-[#0f0f0f]
-                      border border-white/10
-                      text-[#E5E7EB]
-                      hover:border-white/30
-                      transition
-                    "
-                  >
+                  <span key={tech} className="surface-chip px-3 py-1.5 text-xs">
                     {tech}
                   </span>
                 ))}
@@ -147,13 +124,12 @@ export default function Projects() {
                       min-h-10 px-4 py-2
                       text-xs font-semibold
                       rounded-md
-                      bg-white !text-[#050505]
+                      bg-white text-[#050505]!
                       hover:bg-white/90
                       active:scale-[0.97]
                       transition
                     "
                   >
-                    {/* 🔥 Better Live Icon */}
                     <svg
                       className="text-[#050505]"
                       width="14"

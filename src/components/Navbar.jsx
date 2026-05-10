@@ -61,46 +61,47 @@ export default function Navbar() {
       <motion.nav
         initial={{ y: -20, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
-        className="fixed top-4 left-0 w-full z-50 flex justify-center"
+        className="fixed left-0 w-full z-50 flex justify-center"
+        style={{ top: "1.5rem" }}
       >
-        <div
-          className="
-            w-[92%] max-w-6xl h-12
-            flex items-center justify-center md:justify-between px-5
-            rounded-xl
-            bg-[#0a0a0a]/80 backdrop-blur-lg
-            border border-[var(--border)]
-            shadow-[0_8px_24px_rgba(0,0,0,0.3)]
-          "
-        >
+        <div className="w-[92%] max-w-6xl h-14 flex items-center justify-center md:justify-between px-6 rounded-xl bg-[#0a0a0a]/80 backdrop-blur-lg border border-white/12 shadow-lg hover:shadow-xl transition-all duration-300">
           {/* LOGO - CENTERED ON MOBILE, LEFT ON DESKTOP */}
           <a
             href="#top"
-            className="inline-flex items-center text-base font-bold text-[#E5E7EB] hover:text-white transition-colors leading-[1] h-full"
+            className="inline-flex items-center text-base font-bold text-[#E5E7EB] hover:text-white transition-colors leading-none h-full"
           >
             Yatish<span className="text-[#6B7280]">.dev</span>
           </a>
 
           {/* DESKTOP MENU */}
-          <div className="hidden md:flex items-center gap-8">
+          <div className="hidden md:flex items-center h-full gap-8 relative">
             {navItems.map((item) => {
               const isActive = active === item.href;
-
               return (
                 <a
                   key={item.name}
                   href={`#${item.href}`}
-                  className="relative px-2 py-1 text-sm group"
+                  className="relative flex items-center h-full px-3 text-sm group"
                 >
+                  {isActive && (
+                    <motion.span
+                      layoutId="activeNavBadge"
+                      className="absolute inset-y-2 left-1 right-1 flex items-center justify-center rounded-md border border-[#23272b] bg-[#181b1e] shadow-[0_2px_8px_rgba(0,0,0,0.18)] z-0"
+                      style={{ borderRadius: "0.5rem" }}
+                      transition={{
+                        type: "spring",
+                        stiffness: 430,
+                        damping: 34,
+                      }}
+                    />
+                  )}
                   <span
-                    className={`
-                      transition-colors
-                      ${
-                        isActive
-                          ? "text-white font-semibold"
-                          : "text-[#9CA3AF] group-hover:text-white"
-                      }
-                    `}
+                    className={`transition-colors ${isActive ? "text-white font-semibold" : "text-[#9CA3AF] group-hover:text-white"}`}
+                    style={{
+                      lineHeight: "1.8",
+                      position: "relative",
+                      zIndex: 10,
+                    }}
                   >
                     {item.name}
                   </span>
@@ -113,6 +114,8 @@ export default function Navbar() {
           <button
             onClick={() => setOpen(true)}
             aria-label="Open menu"
+            aria-expanded={open}
+            aria-controls="mobile-menu"
             className="md:hidden ml-auto -mr-1 p-1.5 rounded-lg hover:bg-white/10 transition-colors duration-200"
           >
             <div className="flex flex-col gap-1.5">
@@ -139,23 +142,23 @@ export default function Navbar() {
 
             {/* PANEL */}
             <motion.div
+              id="mobile-menu"
               initial={{ x: "100%" }}
               animate={{ x: 0 }}
               exit={{ x: "100%" }}
               transition={{ type: "spring", stiffness: 300, damping: 30 }}
               className="
-                fixed top-0 right-0 h-full w-[80vw] max-w-sm overflow-y-auto
-                bg-gradient-to-b from-[#0a0a0a] to-[#050505]
-                border-l border-[var(--border)]
-                z-50 p-6
+                fixed top-0 right-0 h-full w-[88vw] max-w-88 overflow-y-auto
+                bg-linear-to-b from-[#0a0a0a] to-[#050505]
+                border-l border-(--border)
+                z-50 p-5 sm:p-6
                 shadow-2xl shadow-black/60
               "
             >
-              {/* CLOSE BUTTON */}
               <button
                 onClick={() => setOpen(false)}
                 aria-label="Close menu"
-                className="flex items-center justify-center w-10 h-10 rounded-lg border border-[var(--border)] hover:border-white/30 text-white/70 hover:text-white transition-all duration-200"
+                className="ml-auto flex items-center justify-center w-11 h-11 rounded-lg border border-white/12 hover:border-white/30 text-white/70 hover:text-white transition-all duration-200"
               >
                 <svg
                   width="20"
@@ -169,7 +172,7 @@ export default function Navbar() {
                 </svg>
               </button>
 
-              <div className="space-y-2 mt-12">
+              <div className="space-y-2 mt-8">
                 {navItems.map((item, index) => (
                   <motion.a
                     key={item.name}
@@ -179,16 +182,26 @@ export default function Navbar() {
                     animate={{ opacity: 1, x: 0 }}
                     transition={{ delay: index * 0.05 }}
                     className="
-                      block px-4 py-3 rounded-lg text-base font-medium
+                      flex items-center justify-between px-4 py-4 rounded-xl text-base font-medium
                       text-[#9CA3AF]
                       hover:text-white hover:bg-white/5
-                      border border-transparent hover:border-[var(--border)]
+                      border border-transparent hover:border-(--border)
                       transition-all duration-200
                     "
                   >
-                    {item.name}
+                    <span>{item.name}</span>
                   </motion.a>
                 ))}
+              </div>
+
+              <div className="mt-6 pt-6 border-t border-white/10">
+                <a
+                  href="#contact"
+                  onClick={() => setOpen(false)}
+                  className="modern-btn w-full"
+                >
+                  Contact Me
+                </a>
               </div>
             </motion.div>
           </>

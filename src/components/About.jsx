@@ -4,13 +4,10 @@ import { motion } from "framer-motion";
 
 export default function About() {
   return (
-    <section
-      id="about"
-      className="relative max-w-6xl mx-auto px-4 sm:px-6 pt-16 sm:pt-20 md:pt-20 pb-8 sm:pb-12 bg-[#050505] overflow-x-clip scroll-mt-28"
-    >
+    <section id="about" className="section-shell bg-[#050505]">
       {/* Glow */}
       <div className="absolute inset-0 -z-10">
-        <div className="absolute top-1/3 right-1/4 w-[400px] h-[400px] bg-white/5 blur-3xl rounded-full" />
+        <div className="absolute top-1/3 right-1/4 w-100 h-100 bg-white/5 blur-3xl rounded-full" />
       </div>
 
       <div className="grid md:grid-cols-2 gap-6 sm:gap-8 md:gap-14 items-start">
@@ -22,18 +19,17 @@ export default function About() {
           className="space-y-6 md:space-y-7"
         >
           {/* Badge */}
-          <div className="inline-flex px-3 py-1 text-xs text-[#9CA3AF] border border-[var(--border)] bg-white/5 rounded-full">
-            About Me
-          </div>
+          <div className="section-kicker">About Me</div>
 
           {/* Heading */}
-          <h2 className="text-3xl sm:text-4xl md:text-4xl font-bold tracking-tight text-[#E5E7EB] leading-snug max-w-xl">
-            I build <span className="text-white">scalable and reliable</span>{" "}
+          <h2 className="section-title text-4xl sm:text-5xl md:text-5xl leading-tight font-700">
+            I build{" "}
+            <span className="text-white font-700">scalable and reliable</span>{" "}
             web applications
           </h2>
 
           {/* Subtext */}
-          <p className="text-[#9CA3AF] text-sm md:text-base leading-relaxed max-w-xl">
+          <p className="section-copy text-sm md:text-base max-w-xl">
             Focused on performance, clean UI, and real-world production systems
             that are easy to maintain and scale.
           </p>
@@ -42,7 +38,7 @@ export default function About() {
           <div className="h-px w-16 bg-white/10" />
 
           {/* Content */}
-          <div className="space-y-4 text-[#9CA3AF] text-sm leading-relaxed">
+          <div className="space-y-4 section-copy text-sm">
             <p>
               With{" "}
               <span className="text-[#E5E7EB] font-medium">
@@ -94,7 +90,7 @@ function InfoCard({ label, value }) {
   return (
     <motion.div
       whileHover={{ y: -4 }}
-      className="modern-card"
+      className="surface-card"
       style={{ padding: "1.25rem", cursor: "pointer" }}
     >
       <div className="flex items-center justify-between">

@@ -2,6 +2,7 @@
 
 import { motion } from "framer-motion";
 import { useState } from "react";
+import { toast } from "sonner";
 
 export default function Contact() {
   const [form, setForm] = useState({
@@ -11,8 +12,6 @@ export default function Contact() {
   });
 
   const [loading, setLoading] = useState(false);
-  const [success, setSuccess] = useState(false);
-  const [error, setError] = useState("");
 
   const handleChange = (e) => {
     setForm({ ...form, [e.target.name]: e.target.value });
@@ -21,8 +20,6 @@ export default function Contact() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     setLoading(true);
-    setError("");
-    setSuccess(false);
 
     try {
       const res = await fetch("/api/contact", {
@@ -33,23 +30,26 @@ export default function Contact() {
 
       if (!res.ok) throw new Error("Something went wrong");
 
-      setSuccess(true);
+      toast.success("Message sent successfully! ✅", {
+        description: `Thanks ${form.name}! I'll review your message and get back to you soon.`,
+        duration: 5000,
+      });
       setForm({ name: "", email: "", message: "" });
-    } catch {
-      setError("Failed to send message.");
+    } catch (error) {
+      toast.error("Oops! Something went wrong", {
+        description: "Please try again or email yatishp777@gmail.com directly.",
+        duration: 5000,
+      });
     }
 
     setLoading(false);
   };
 
   return (
-    <section
-      id="contact"
-      className="relative max-w-6xl mx-auto px-4 sm:px-6 pt-16 sm:pt-20 md:pt-20 pb-8 sm:pb-12 md:pb-12 bg-[#050505] overflow-x-clip scroll-mt-28"
-    >
+    <section id="contact" className="section-shell bg-[#050505]">
       {/* Glow */}
       <div className="absolute inset-0 -z-10">
-        <div className="absolute bottom-1/3 left-1/2 -translate-x-1/2 w-[320px] h-[320px] sm:w-[380px] sm:h-[380px] md:w-[450px] md:h-[450px] bg-white/5 blur-3xl rounded-full opacity-40" />
+        <div className="absolute bottom-1/3 left-1/2 -translate-x-1/2 w-80 h-80 sm:w-95 sm:h-95 md:w-112.5 md:h-112.5 bg-white/5 blur-3xl rounded-full opacity-40" />
       </div>
 
       {/* Header */}
@@ -59,15 +59,13 @@ export default function Contact() {
         className="mb-14 text-center"
       >
         {/* Badge */}
-        <div className="inline-flex px-3 py-1 text-xs text-[#9CA3AF] border border-[var(--border)] bg-white/5 rounded-full mb-4">
-          Contact
-        </div>
+        <div className="section-kicker mb-4">Contact</div>
 
-        <h2 className="text-3xl sm:text-4xl md:text-4xl font-bold tracking-tight text-[#E5E7EB]">
+        <h2 className="section-title text-4xl sm:text-5xl md:text-5xl">
           Let’s Work Together
         </h2>
 
-        <p className="mt-3 text-[#9CA3AF] text-base max-w-xl mx-auto">
+        <p className="section-copy mt-3 text-base max-w-xl mx-auto">
           Have a project or opportunity? Feel free to reach out.
         </p>
       </motion.div>
@@ -79,9 +77,7 @@ export default function Contact() {
         whileInView={{ opacity: 1, y: 0 }}
         className="
           max-w-lg mx-auto
-          bg-[#0a0a0a]/85 backdrop-blur-sm
-          border border-[var(--border)]
-          rounded-xl
+          surface-card
           p-5 sm:p-6
           space-y-5
         "
@@ -100,14 +96,15 @@ export default function Contact() {
               w-full px-4 py-3
               text-base sm:text-sm
               bg-[#050505]
-              border border-[var(--border)]
+              border border-white/12
               rounded-md
               text-[#E5E7EB]
-              placeholder:text-[#6B7280]
+              placeholder:text-[#4B5563]
               focus:outline-none
-              focus:border-[var(--border-strong)]
-              focus:ring-2 focus:ring-white/10
-              transition-all
+              focus:border-white/25
+              focus:ring-1 focus:ring-white/15
+              transition-all duration-200
+              hover:border-white/15
             "
           />
         ))}
@@ -124,14 +121,15 @@ export default function Contact() {
             w-full px-4 py-3
             text-base sm:text-sm
             bg-[#050505]
-            border border-[var(--border)]
+            border border-white/12
             rounded-md
             text-[#E5E7EB]
-            placeholder:text-[#6B7280]
+            placeholder:text-[#4B5563]
             focus:outline-none
-            focus:border-[var(--border-strong)]
-            focus:ring-2 focus:ring-white/10
-            transition-all
+            focus:border-white/25
+            focus:ring-1 focus:ring-white/15
+            transition-all duration-200
+            hover:border-white/15
             resize-none
           "
         />
@@ -150,15 +148,6 @@ export default function Contact() {
         >
           {loading ? "Sending..." : "Send Message"}
         </button>
-
-        {/* Feedback */}
-        {success && (
-          <p className="text-green-400 text-xs text-center">
-            Message sent successfully
-          </p>
-        )}
-
-        {error && <p className="text-red-400 text-xs text-center">{error}</p>}
       </motion.form>
 
       {/* Alternative Contact */}
