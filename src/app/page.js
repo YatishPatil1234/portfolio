@@ -1,5 +1,4 @@
 import About from "@/components/About";
-import BackToTop from "@/components/BackToTop";
 import Contact from "@/components/Contact";
 import Experience from "@/components/Experience";
 import Footer from "@/components/Footer";
@@ -16,7 +15,6 @@ export default function Home() {
       <Skills />
       <Projects />
       <Contact />
-      <BackToTop />
       <Footer />
     </>
   );
