@@ -9,33 +9,53 @@ import {
   IconLayers,
   IconWrench,
 } from "./icons";
-import { fadeInView } from "@/lib/motion";
+import { fadeInView, staggerContainer, staggerItem, staggerViewport } from "@/lib/motion";
 
 const skillGroups = [
   {
     title: "Languages",
     Icon: IconCode,
-    skills: ["JavaScript", "TypeScript", "Core Java", "SQL"],
+    skills: ["JavaScript", "TypeScript", "SQL", "Core Java", "Ruby (Basic)"],
   },
   {
-    title: "Web",
+    title: "Frontend",
     Icon: IconGlobe,
-    skills: ["HTML5", "CSS3", "Responsive Design", "REST APIs", "Component Architecture"],
+    skills: [
+      "React.js",
+      "Next.js (SSR, App Router)",
+      "TypeScript",
+      "Redux Toolkit",
+      "Tailwind CSS",
+      "ShadCN UI",
+      "CSS Modules",
+      "HTML5",
+      "CSS3",
+      "Core Web Vitals",
+    ],
   },
   {
-    title: "Frameworks",
-    Icon: IconLayers,
-    skills: ["React.js", "Next.js (SSR)", "Redux Toolkit", "Tailwind CSS", "CSS Modules"],
-  },
-  {
-    title: "Databases",
+    title: "Backend & Databases",
     Icon: IconDatabase,
-    skills: ["PostgreSQL"],
+    skills: [
+      "Ruby on Rails",
+      "Node.js",
+      "Express.js",
+      "PostgreSQL",
+      "Redis",
+      "REST APIs",
+      "JWT Authentication",
+      "Sidekiq",
+    ],
   },
   {
-    title: "Tools",
+    title: "DevOps & Cloud",
+    Icon: IconLayers,
+    skills: ["Docker", "AWS (Basics)"],
+  },
+  {
+    title: "Developer Tools",
     Icon: IconWrench,
-    skills: ["Git", "GitHub", "VS Code", "Postman", "Chrome DevTools", "npm"],
+    skills: ["Git", "GitHub", "Postman", "VS Code", "Chrome DevTools", "Linux", "npm"],
   },
 ];
 
@@ -46,12 +66,22 @@ export default function Skills() {
         <SectionHeader
           label="Skills"
           title="Skills & technologies"
-          description="Technologies I use in day-to-day development."
+          description="Technologies from my resume — frontend, backend, and tooling."
         />
 
-        <div className="skills-grid">
+        <motion.div
+          className="skills-grid"
+          variants={staggerContainer}
+          initial="hidden"
+          whileInView="show"
+          viewport={staggerViewport}
+        >
           {skillGroups.map(({ title, Icon, skills }) => (
-            <article key={title} className="skill-card card card-pad">
+            <motion.article
+              key={title}
+              variants={staggerItem}
+              className="skill-card card card-pad card-interactive"
+            >
               <div className="skill-card-header">
                 <span className="skill-card-icon" aria-hidden>
                   <Icon className="w-4 h-4" />
@@ -65,9 +95,9 @@ export default function Skills() {
                   </span>
                 ))}
               </div>
-            </article>
+            </motion.article>
           ))}
-        </div>
+        </motion.div>
       </motion.div>
     </section>
   );

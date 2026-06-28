@@ -2,11 +2,12 @@
 
 import { IconGitHub, IconLinkedIn, IconMail } from "./icons";
 import { handleTopNav } from "@/lib/scroll";
+import { siteConfig } from "@/lib/site";
 
 const links = [
-  { href: "https://github.com/YatishPatil1234", label: "GitHub", Icon: IconGitHub },
-  { href: "https://www.linkedin.com/in/yatish-patil-dev", label: "LinkedIn", Icon: IconLinkedIn },
-  { href: "mailto:yatishp777@gmail.com", label: "Email", Icon: IconMail },
+  { href: siteConfig.links.github, label: "GitHub", Icon: IconGitHub },
+  { href: siteConfig.links.linkedin, label: "LinkedIn", Icon: IconLinkedIn },
+  { href: siteConfig.links.email, label: "Email", Icon: IconMail },
 ];
 
 export default function Footer() {
@@ -20,7 +21,7 @@ export default function Footer() {
             <a href="/" className="site-footer-logo" onClick={handleTopNav}>
               Yatish<span className="site-footer-logo-suffix">.dev</span>
             </a>
-            <p className="site-footer-meta">© {year} Yatish Patil · Frontend developer</p>
+            <p className="site-footer-meta">© {year} {siteConfig.name}</p>
           </div>
 
           <nav className="site-footer-social" aria-label="Social links">

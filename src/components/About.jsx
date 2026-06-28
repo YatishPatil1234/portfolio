@@ -3,62 +3,75 @@
 import { motion } from "framer-motion";
 import SectionHeader from "./SectionHeader";
 import { IconClock, IconGauge, IconRocket, IconTarget } from "./icons";
-import { fadeInView } from "@/lib/motion";
+import { fadeInView, staggerContainer, staggerItem, staggerViewport } from "@/lib/motion";
 
 const stats = [
-  { label: "Experience", value: "1.8+ Years", Icon: IconClock },
-  { label: "Work", value: "Production Apps", Icon: IconRocket },
-  { label: "SEO", value: "Lighthouse 100", Icon: IconGauge },
-  { label: "Focus", value: "UI · Performance · APIs", Icon: IconTarget },
+  { label: "Experience", value: "Nearly 2 years", Icon: IconClock },
+  { label: "Company", value: "Instinct Innovations", Icon: IconRocket },
+  { label: "Performance", value: "Lighthouse SEO 100", Icon: IconGauge },
+  { label: "Focus", value: "Full-stack · Production", Icon: IconTarget },
 ];
 
 export default function About() {
   return (
     <section id="about" className="section-shell about-section">
       <motion.div className="page-container" {...fadeInView}>
-        <motion.div
-          className="about-layout"
-          initial={{ opacity: 0, y: 16 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, amount: 0.12 }}
-          transition={{ duration: 0.5 }}
-        >
-          <div className="about-main">
+        <div className="about-layout">
+          <motion.div
+            className="about-main"
+            initial={{ opacity: 0, y: 16 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={staggerViewport}
+            transition={{ duration: 0.45 }}
+          >
             <SectionHeader
               label="About"
-              title="Scalable, reliable web applications"
-              description="Focused on performance, clean UI, and production systems that scale."
+              title="Production-focused engineer"
+              description="Professional summary — what I build and how I work."
               align="left"
               className="!mb-6"
             />
 
-            <div className="about-copy space-y-4">
-              <p>
-                With <span className="text-emphasis">1.8+ years of experience</span>, I work at{" "}
-                <span className="text-emphasis">Instinct Innovations</span>, building
-                production-ready applications used in real-world environments.
-              </p>
-              <p>
-                I work with <span className="text-emphasis">React</span>,{" "}
-                <span className="text-emphasis">Next.js</span>, and{" "}
-                <span className="text-emphasis">Tailwind CSS</span>, along with API integration
-                and scalable frontend architecture.
-              </p>
-              <p>
-                I enjoy simplifying complex problems and building interfaces that stay maintainable
-                as products grow.
-              </p>
-            </div>
-          </div>
+            <motion.div
+              className="about-copy space-y-4"
+              variants={staggerContainer}
+              initial="hidden"
+              whileInView="show"
+              viewport={staggerViewport}
+            >
+              <motion.p variants={staggerItem}>
+                Associate Software Engineer with nearly 2 years of experience building scalable,
+                production-ready web applications using React.js, Next.js, and TypeScript. I work on
+                frontend architecture, REST API integration, SSR, App Router, authentication workflows,
+                and enterprise application development.
+              </motion.p>
+              <motion.p variants={staggerItem}>
+                At{" "}
+                <span className="text-emphasis">Instinct Innovations</span> in Mumbai, I contribute
+                across the stack — Ruby on Rails, PostgreSQL, Redis, Docker, and AWS — while shipping
+                features on pharmacy e-commerce and retail management platforms used in production.
+              </motion.p>
+            </motion.div>
+          </motion.div>
 
-          <div className="about-stats">
-            <div className="section-eyebrow about-stats-eyebrow">
+          <motion.div
+            className="about-stats"
+            variants={staggerContainer}
+            initial="hidden"
+            whileInView="show"
+            viewport={staggerViewport}
+          >
+            <motion.div variants={staggerItem} className="section-eyebrow about-stats-eyebrow">
               <span className="section-eyebrow-line" aria-hidden />
               <p className="section-label">Highlights</p>
-            </div>
+            </motion.div>
             <ul className="stats-stack list-none m-0 p-0">
               {stats.map(({ label, value, Icon }) => (
-                <li key={label} className="stat-card">
+                <motion.li
+                  key={label}
+                  variants={staggerItem}
+                  className="stat-card card-interactive"
+                >
                   <span className="stat-icon-wrap" aria-hidden>
                     <Icon className="w-5 h-5 shrink-0" />
                   </span>
@@ -66,11 +79,11 @@ export default function About() {
                     <span className="stat-label">{label}</span>
                     <p className="stat-value">{value}</p>
                   </div>
-                </li>
+                </motion.li>
               ))}
             </ul>
-          </div>
-        </motion.div>
+          </motion.div>
+        </div>
       </motion.div>
     </section>
   );

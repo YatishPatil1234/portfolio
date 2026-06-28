@@ -2,8 +2,9 @@
 
 import { AnimatePresence, motion } from "framer-motion";
 import { useEffect, useState } from "react";
-import { IconClose, IconMenu } from "./icons";
+import { IconClose, IconExternalLink, IconMenu } from "./icons";
 import { handleSectionNav, handleTopNav } from "@/lib/scroll";
+import { siteConfig } from "@/lib/site";
 
 const navItems = [
   { name: "About", href: "about" },
@@ -13,19 +14,25 @@ const navItems = [
   { name: "Contact", href: "contact" },
 ];
 
+const RESUME = siteConfig.links.resume;
+
 export default function Navbar() {
   const [open, setOpen] = useState(false);
   const [active, setActive] = useState("");
+  const [scrolled, setScrolled] = useState(false);
 
   useEffect(() => {
     const onScroll = () => {
+      setScrolled(window.scrollY > 12);
       const pos = window.scrollY + 120;
+      let current = "";
       navItems.forEach((item) => {
         const el = document.getElementById(item.href);
         if (el && pos >= el.offsetTop && pos < el.offsetTop + el.offsetHeight) {
-          setActive(item.href);
+          current = item.href;
         }
       });
+      setActive(current);
     };
     window.addEventListener("scroll", onScroll, { passive: true });
     onScroll();
@@ -39,30 +46,34 @@ export default function Navbar() {
 
   return (
     <>
-      <header className="fixed top-0 inset-x-0 z-50 h-[var(--nav-height)] border-b border-[var(--border)] bg-black/90 backdrop-blur-sm">
-        <motion.div
-          className="page-container h-full flex items-center justify-between"
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 0.3 }}
-        >
+      <header className={`site-header${scrolled ? " is-scrolled" : ""}`}>
+        <div className="page-container site-header-inner">
           <a href="/" className="nav-logo" onClick={handleTopNav}>
             Yatish<span className="nav-logo-suffix">.dev</span>
           </a>
 
           <div className="nav-end">
-            <nav className="hidden md:flex items-center gap-1" aria-label="Main">
+            <nav className="hidden md:flex items-center gap-0.5" aria-label="Main">
               {navItems.map((item) => (
                 <a
                   key={item.name}
                   href={`#${item.href}`}
-                  className={`nav-link ${active === item.href ? "active" : ""}`}
+                  className={`nav-link${active === item.href ? " active" : ""}`}
                   onClick={(e) => handleSectionNav(e, item.href)}
                 >
                   {item.name}
                 </a>
               ))}
             </nav>
+
+            <a
+              href={RESUME}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="nav-resume-btn hidden sm:inline-flex"
+            >
+              Resume
+            </a>
 
             <button
               type="button"
@@ -78,24 +89,28 @@ export default function Navbar() {
               )}
             </button>
           </div>
-        </motion.div>
+        </div>
       </header>
 
       <AnimatePresence>
         {open && (
           <>
-            <motion.div
+            <motion.button
+              type="button"
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
-              className="fixed inset-0 z-40 bg-black/90 md:hidden"
+              aria-label="Close menu"
+              className="mobile-nav-backdrop md:hidden"
               onClick={() => setOpen(false)}
             />
             <motion.nav
-              initial={{ opacity: 0, y: -8 }}
+              initial={{ opacity: 0, y: -12 }}
               animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: -8 }}
+              exit={{ opacity: 0, y: -12 }}
+              transition={{ duration: 0.22, ease: [0.22, 1, 0.36, 1] }}
               className="mobile-nav-panel md:hidden"
+              aria-label="Mobile"
             >
               {navItems.map((item) => (
                 <a
@@ -105,11 +120,21 @@ export default function Navbar() {
                     handleSectionNav(e, item.href);
                     setOpen(false);
                   }}
-                  className={`mobile-nav-link ${active === item.href ? "active" : ""}`}
+                  className={`mobile-nav-link${active === item.href ? " active" : ""}`}
                 >
                   {item.name}
                 </a>
               ))}
+              <a
+                href={RESUME}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="mobile-nav-resume"
+                onClick={() => setOpen(false)}
+              >
+                <IconExternalLink className="icon-inline" aria-hidden />
+                Resume
+              </a>
             </motion.nav>
           </>
         )}

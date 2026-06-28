@@ -8,39 +8,59 @@ import {
   IconMapPin,
   IconSparkles,
 } from "./icons";
-import { fadeInView } from "@/lib/motion";
+import { fadeInView, staggerContainer, staggerItem, staggerViewport } from "@/lib/motion";
 
 const experiences = [
   {
-    role: "Frontend Developer",
+    role: "Associate Software Engineer",
     company: "Instinct Innovations",
     period: "Sep 2024 – Present",
     location: "Mumbai, India",
-    highlight: "Lighthouse SEO Score 100",
+    highlight: "Frontend-focused full-stack on FrankRoss Pharmacy",
     points: [
-      "Built a production-grade pharmacy e-commerce platform (FrankRoss) using Next.js (SSR), improving SEO and performance.",
-      "Integrated REST APIs across product, cart, checkout, and billing for seamless data flow.",
-      "Developed reusable UI components, improving scalability and maintainability.",
-      "Worked on PharmacyPro system handling sales, billing, inventory, and reporting workflows.",
-      "Implemented GST-compliant E-Invoice and E-Way Bill features.",
+      "Contributed on FrankRoss Pharmacy, a production-grade pharmacy e-commerce platform serving real-world users.",
+      "Developed and maintained frontend features with React.js, Next.js, and TypeScript; contributed to Ruby on Rails backend enhancements and bug fixes.",
+      "Built authentication workflows, role-based access control, API integrations, and application security improvements.",
+      "Worked with PostgreSQL, Redis, and Sidekiq for backend workflows, background job processing, and enterprise data handling.",
+      "Used Docker-based development environments and contributed to deployment workflows, infrastructure setup, and AWS-based processes.",
+      "Handled production bug fixes, client-requested enhancements, and performance optimizations while collaborating with clients and internal teams.",
     ],
-    tech: ["React", "Next.js (SSR)", "TypeScript", "Redux Toolkit", "REST APIs", "PostgreSQL"],
+    tech: [
+      "React",
+      "Next.js",
+      "TypeScript",
+      "Ruby on Rails",
+      "PostgreSQL",
+      "Redis",
+      "Docker",
+      "AWS",
+    ],
   },
 ];
 
 export default function Experience() {
   return (
-    <section id="experience" className="section-shell">
+    <section id="experience" className="section-shell section-tone">
       <motion.div className="page-container" {...fadeInView}>
         <SectionHeader
           label="Experience"
-          title="Work experience"
-          description="Building scalable production applications in real-world environments."
+          title="Professional experience"
+          description="Nearly 2 years delivering production features across frontend and backend."
         />
 
-        <div className="experience-block">
+        <motion.div
+          className="experience-block"
+          variants={staggerContainer}
+          initial="hidden"
+          whileInView="show"
+          viewport={staggerViewport}
+        >
           {experiences.map((exp) => (
-            <article key={exp.company} className="card card-pad experience-card">
+            <motion.article
+              key={exp.company}
+              variants={staggerItem}
+              className="card card-pad experience-card card-interactive"
+            >
               <div className="experience-header">
                 <span className="experience-role-icon" aria-hidden>
                   <IconBriefcase className="w-4 h-4" />
@@ -85,9 +105,9 @@ export default function Experience() {
                   ))}
                 </div>
               </div>
-            </article>
+            </motion.article>
           ))}
-        </div>
+        </motion.div>
       </motion.div>
     </section>
   );

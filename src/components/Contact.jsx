@@ -60,14 +60,14 @@ export default function Contact() {
                   href={href}
                   target={href.startsWith("http") ? "_blank" : undefined}
                   rel={href.startsWith("http") ? "noopener noreferrer" : undefined}
-                  className="contact-link contact-link-row"
+                  className="contact-link contact-link-row card-interactive"
                 >
                   <span className="contact-link-icon-wrap" aria-hidden>
                     <Icon className="contact-link-icon" />
                   </span>
                   <span className="min-w-0">
                     <span className="contact-link-label">{label}</span>
-                    <span className="contact-link-value block truncate">{value}</span>
+                    <span className="contact-link-value block">{value}</span>
                   </span>
                 </a>
               ))}
